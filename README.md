@@ -11,7 +11,8 @@ Programming language: C and Z80 assembler
 
 ## Description
 
-Open Source library with functions for show up to 32 monkeys in the screen.
+
+Open Source library with functions for showing up to 32 monkeys in the screen.
 
 It uses the functions from the MSX BIOS, so it is designed to create applications in ROM format.
   
@@ -21,6 +22,7 @@ In the source code (\examples), you can find applications for testing and learni
 
 Enjoy it!
 
+MONKEE HAPPY
 
 
 
@@ -40,7 +42,7 @@ Enjoy it!
 
 ## Functions
 
-* void **InitializeMonkeys**() - Start the Monkey's World - Set Screen 1 with 16x16 sprites and write monkey sprite patterns to VRAM.
+* void **InitializeMonkeys**() - Start the Monkeys' World - Set Screen 1 with 16x16 sprites and write monkey sprite patterns to VRAM.
 * void **ClearMonkeys**() - The monkeys go off the screen.
 * void **ShowMonkey**(char monkey, char x, char y, char color) - Display one monkey.
 * void **UpdateMonkeyFrame**(char monkey, char frame) - Give life to the monkey! (monkey=0-31;frame=0-1)
