@@ -1,7 +1,7 @@
 # MSX monKEY Library
 
 ```
-Author: mvac7 [mvac7303b@gmail.com] and [Fubukimaru](https://github.com/Fubukimaru) 
+Author: mvac7 and Fubukimaru 
 Architecture: MSX
 Format: C Object (SDCC .rel)
 Programming language: C and Z80 assembler
