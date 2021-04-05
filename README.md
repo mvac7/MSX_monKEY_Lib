@@ -12,7 +12,7 @@ Programming language: C and Z80 assembler
 ## Description
 
 > "YOU'RE BANANAS!"
-> - Monkee 2021
+- Monkee 2021
 
 Open Source library with functions for showing up to 32 monkeys in the screen.
 
