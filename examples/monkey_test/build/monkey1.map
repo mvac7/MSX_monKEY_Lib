@@ -1,0 +1,107 @@
+ASxxxx Linker V03.00 + NoICE + sdld,  page 1.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000000  .__.ABS.                           MONKEY_MSX
+     00000000  l__CABS                         
+     00000000  l__DABS                         
+     00000000  l__GSFINAL                      
+     00000000  l__GSINIT                       
+     00000000  l__HEADER                       
+     00000000  l__HOME                         
+     00000000  l__INITIALIZED                  
+     00000000  l__INITIALIZER                  
+     00000000  s__CABS                         
+     00000000  s__DABS                         
+     00000000  s__HEADER                       
+     00000000  s__HEADER0                      
+     00000001  l__DATA                         
+     0000001A  l__HEADER0                      
+     0000074A  l__CODE                         
+     00004020  s__CODE                         
+     0000C000  s__DATA                         
+     0000C001  s__GSFINAL                      
+     0000C001  s__GSINIT                       
+     0000C001  s__HOME                         
+     0000C001  s__INITIALIZED                  
+     0000C001  s__INITIALIZER                  
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00004020    0000074A =        1866. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00004020  _main                              monkey1
+     00004035  _text01                            monkey1
+     0000404E  _text02                            monkey1
+     00004067  _sprcol                            monkey1
+     0000406F  _posX                              monkey1
+     0000416F  _posY                              monkey1
+     0000426F  _INKEY                             monkey1
+     0000427E  _WAIT                              monkey1
+     0000428F  _CLS                               monkey1
+     000042A1  _VPRINT                            monkey1
+     000042CD  _VPOKEARRAY                        monkey1
+     00004303  _LOCATE                            monkey1
+     0000431B  _PRINT                             monkey1
+     00004336  _PEEK                              monkey1
+     00004348  _PEEKW                             monkey1
+     0000435D  _COLOR                             monkey1
+     0000437D  _VPOKE                             monkey1
+     00004394  _VPEEK                             monkey1
+     000043A9  _FillVRAM                          monkey1
+     000043C6  _CopyToVRAM                        monkey1
+     000043E6  _setFont                           monkey1
+     00004412  _testSPRITES                       monkey1
+     00004628  _showSprites                       monkey1
+     0000466C  _InitializeMonkeys                 MONKEY_MSX
+     000046ED  _ClearMonkeys                      MONKEY_MSX
+     00004702  _ShowMonkey                        MONKEY_MSX
+     0000472D  _UpdateMonkeyFrame                 MONKEY_MSX
+     0000474A  _GiveMeANumber                     MONKEY_MSX
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_DATA                               0000C000    00000001 =           1. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000C000  _SEED                              MONKEY_MSX
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HEADER0                            00000000    0000001A =          26. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 5.
+
+Files Linked                              [ module(s) ]
+
+build\monkey1.rel                         [ monkey1 ]
+libs\crt_MSX816kROM4000.rel               [  ]
+libs\MONKEY_MSX.rel                       [ MONKEY_MSX ]
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 6.
+
+User Base Address Definitions
+
+_CODE = 0x4020
+_DATA = 0xc000
+
+

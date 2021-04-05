@@ -1,0 +1,200 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.9.0 #11195 (MINGW64)
+                              4 ;--------------------------------------------------------
+                              5 	.module MONKEY_MSX
+                              6 	.optsdcc -mz80
+                              7 	
+                              8 ;--------------------------------------------------------
+                              9 ; Public variables in this module
+                             10 ;--------------------------------------------------------
+                             11 	.globl _SEED
+                             12 	.globl _InitializeMonkeys
+                             13 	.globl _ClearMonkeys
+                             14 	.globl _ShowMonkey
+                             15 	.globl _UpdateMonkeyFrame
+                             16 	.globl _GiveMeANumber
+                             17 ;--------------------------------------------------------
+                             18 ; special function registers
+                             19 ;--------------------------------------------------------
+                             20 ;--------------------------------------------------------
+                             21 ; ram data
+                             22 ;--------------------------------------------------------
+                             23 	.area _DATA
+   0000                      24 _SEED::
+   0000                      25 	.ds 1
+                             26 ;--------------------------------------------------------
+                             27 ; ram data
+                             28 ;--------------------------------------------------------
+                             29 	.area _INITIALIZED
+                             30 ;--------------------------------------------------------
+                             31 ; absolute external ram data
+                             32 ;--------------------------------------------------------
+                             33 	.area _DABS (ABS)
+                             34 ;--------------------------------------------------------
+                             35 ; global & static initialisations
+                             36 ;--------------------------------------------------------
+                             37 	.area _HOME
+                             38 	.area _GSINIT
+                             39 	.area _GSFINAL
+                             40 	.area _GSINIT
+                             41 ;--------------------------------------------------------
+                             42 ; Home
+                             43 ;--------------------------------------------------------
+                             44 	.area _HOME
+                             45 	.area _HOME
+                             46 ;--------------------------------------------------------
+                             47 ; code
+                             48 ;--------------------------------------------------------
+                             49 	.area _CODE
+                             50 ;src\MONKEY_MSX.c:44: void InitializeMonkeys() __naked
+                             51 ;	---------------------------------
+                             52 ; Function InitializeMonkeys
+                             53 ; ---------------------------------
+   0000                      54 _InitializeMonkeys::
+                             55 ;src\MONKEY_MSX.c:77: __endasm;
+   0000 DD E5         [15]   56 	push	IX
+   0002 3E 01         [ 7]   57 	ld	A,#1 ;SCREEN 1
+   0004 CD 5F 00      [17]   58 	call	0x005F
+   0007 21 E0 F3      [10]   59 	ld	HL,#0xF3E0 ; --- read vdp(1) from mem
+   000A 46            [ 7]   60 	ld	B,(HL)
+   000B CB C8         [ 8]   61 	set	1,B ; 16x16
+   000D 0E 01         [ 7]   62 	ld	C,#0x01
+   000F CD 47 00      [17]   63 	call	0x0047
+   0012 21r21r00      [10]   64 	ld	HL,#MONKEY_SPRITES
+   0015 11 00 38      [10]   65 	ld	DE,#0x3800
+   0018 01 60 00      [10]   66 	ld	BC,#96
+   001B CD 5C 00      [17]   67 	call	0x005C
+   001E DD E1         [14]   68 	pop	IX
+   0020 C9            [10]   69 	ret
+                             70 ;	SpriteSet Pattern Data - Size:16x16
+                             71 ;	Sprite range: 0 to 2
+                             72 ;	Size= 96
+   0021                      73 	MONKEY_SPRITES:
+   0021 00 30 70 41 62 63    74 	.db	0x00,0x30,0x70,0x41,0x62,0x63,0x7F,0x3F,0x07,0x07,0x07,0x0F,0x0F,0x0E,0x06,0x1E
+        7F 3F 07 07 07 0F
+        0F 0E 06 1E
+   0031 00 00 00 C0 20 7C    75 	.db	0x00,0x00,0x00,0xC0,0x20,0x7C,0x7E,0xE6,0xE6,0xE2,0xE6,0xF0,0xF8,0x18,0x1E,0x00
+        7E E6 E6 E2 E6 F0
+        F8 18 1E 00
+   0041 30 70 40 61 62 7F    76 	.db	0x30,0x70,0x40,0x61,0x62,0x7F,0x3F,0x07,0x07,0x07,0x07,0x0F,0x1F,0x18,0x38,0x00
+        3F 07 07 07 07 0F
+        1F 18 38 00
+   0051 00 00 00 C0 20 60    77 	.db	0x00,0x00,0x00,0xC0,0x20,0x60,0x7C,0xFE,0xE6,0xE6,0xE2,0xF6,0xF0,0x70,0x60,0x78
+        7C FE E6 E6 E2 F6
+        F0 70 60 78
+   0061 40 C0 C0 E0 70 30    78 	.db	0x40,0xC0,0xC0,0xE0,0x70,0x30,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
+        00 00 00 00 00 00
+        00 00 00 00
+   0071 00 00 00 00 00 00    79 	.db	0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
+        00 00 00 00 00 00
+        00 00 00 00
+                             80 ;src\MONKEY_MSX.c:78: }
+                             81 ;src\MONKEY_MSX.c:93: void ClearMonkeys() __naked
+                             82 ;	---------------------------------
+                             83 ; Function ClearMonkeys
+                             84 ; ---------------------------------
+   0081                      85 _ClearMonkeys::
+                             86 ;src\MONKEY_MSX.c:118: __endasm;
+   0081 DD E5         [15]   87 	push	IX
+                             88 ;call	0x0069
+   0083 21 00 1B      [10]   89 	ld	HL,#0x1B00
+   0086 06 20         [ 7]   90 	ld	B,#32
+   0088                      91 	loop_ClearOAM:
+   0088 3E D1         [ 7]   92 	ld	A,#0xD1
+   008A CD 4D 00      [17]   93 	call	0x004D
+   008D 23            [ 6]   94 	inc	HL
+   008E 23            [ 6]   95 	inc	HL
+   008F 23            [ 6]   96 	inc	HL
+   0090 23            [ 6]   97 	inc	HL
+   0091 10 F5         [13]   98 	djnz	loop_ClearOAM
+   0093 DD E1         [14]   99 	pop	IX
+   0095 C9            [10]  100 	ret
+                            101 ;src\MONKEY_MSX.c:119: }    
+                            102 ;src\MONKEY_MSX.c:132: void ShowMonkey(char monkey, char x, char y, char color) __naked
+                            103 ;	---------------------------------
+                            104 ; Function ShowMonkey
+                            105 ; ---------------------------------
+   0096                     106 _ShowMonkey::
+                            107 ;src\MONKEY_MSX.c:179: __endasm;
+   0096 DD E5         [15]  108 	push	IX
+   0098 DD 21 00 00   [14]  109 	ld	IX,#0
+   009C DD 39         [15]  110 	add	IX,SP
+   009E DD 7E 04      [19]  111 	ld	A,4(IX) ;monkey video-plane
+   00A1 CD 87 00      [17]  112 	call	0x0087
+   00A4 DD 7E 06      [19]  113 	ld	A,6(IX) ;y
+   00A7 CD 4D 00      [17]  114 	call	0x004D
+   00AA 23            [ 6]  115 	inc	HL
+   00AB DD 7E 05      [19]  116 	ld	A,5(IX) ;x
+   00AE CD 4D 00      [17]  117 	call	0x004D
+   00B1 23            [ 6]  118 	inc	HL
+   00B2 3E 00         [ 7]  119 	ld	A,#0
+   00B4 CD 4D 00      [17]  120 	call	0x004D ;pattern
+   00B7 23            [ 6]  121 	inc	HL
+   00B8 DD 7E 07      [19]  122 	ld	A,7(IX) ;color
+   00BB CD 4D 00      [17]  123 	call	0x004D
+   00BE DD E1         [14]  124 	pop	IX
+   00C0 C9            [10]  125 	ret
+                            126 ;	set sprite pattern number
+                            127 ;	Multiply * 4 when its a 16x16 sprite.
+                            128 ;	E - Sprite Number
+                            129 ;SPRPATNOV:	;sprite pattern no calc vram address
+                            130 ;	call 0x008A ;0x008A get sprite size in bytes
+                            131 ;	cp #32 ;16x16
+                            132 ;	jr NZ,WRTPAT
+                            133 ;IF	16x16
+                            134 ;	SLA E
+                            135 ;	SLA E ;multiply x 4
+                            136 ;WRTPAT:
+                            137 ;	LD A,E
+                            138 ;	JP 0x004D
+                            139 ;src\MONKEY_MSX.c:180: }
+                            140 ;src\MONKEY_MSX.c:184: void UpdateMonkeyFrame(char monkey, char frame) __naked
+                            141 ;	---------------------------------
+                            142 ; Function UpdateMonkeyFrame
+                            143 ; ---------------------------------
+   00C1                     144 _UpdateMonkeyFrame::
+                            145 ;src\MONKEY_MSX.c:206: __endasm;
+   00C1 DD E5         [15]  146 	push	IX
+   00C3 DD 21 00 00   [14]  147 	ld	IX,#0
+   00C7 DD 39         [15]  148 	add	IX,SP
+   00C9 DD 7E 04      [19]  149 	ld	A,4(IX) ;monkey video-plane
+   00CC CD 87 00      [17]  150 	call	0x0087
+   00CF 23            [ 6]  151 	inc	HL
+   00D0 23            [ 6]  152 	inc	HL
+   00D1 DD 7E 05      [19]  153 	ld	A,5(IX)
+   00D4 CB 27         [ 8]  154 	SLA	A
+   00D6 CB 27         [ 8]  155 	SLA	A
+   00D8 CD 4D 00      [17]  156 	call	0x004D ;pattern
+   00DB DD E1         [14]  157 	pop	IX
+   00DD C9            [10]  158 	ret
+                            159 ;src\MONKEY_MSX.c:207: }
+                            160 ;src\MONKEY_MSX.c:212: char GiveMeANumber() __naked
+                            161 ;	---------------------------------
+                            162 ; Function GiveMeANumber
+                            163 ; ---------------------------------
+   00DE                     164 _GiveMeANumber::
+                            165 ;src\MONKEY_MSX.c:245: __endasm;
+   00DE DD E5         [15]  166 	push	IX
+   00E0 DD 21 00 00   [14]  167 	ld	IX,#0
+   00E4 DD 39         [15]  168 	add	IX,SP
+   00E6 CDrEDr00      [17]  169 	call	RANDOM
+   00E9 6F            [ 4]  170 	ld	L,A
+   00EA DD E1         [14]  171 	pop	IX
+   00EC C9            [10]  172 	ret
+   00ED                     173 	RANDOM:
+   00ED 3Ar00r00      [13]  174 	ld	A,(_SEED)
+   00F0 CB 2F         [ 8]  175 	SRA	A
+   00F2 87            [ 4]  176 	add	A,A
+   00F3 87            [ 4]  177 	add	A,A
+   00F4 47            [ 4]  178 	ld	B,A
+   00F5 ED 5F         [ 9]  179 	ld	A,R
+   00F7 80            [ 4]  180 	add	A,B
+   00F8 3C            [ 4]  181 	inc	A
+   00F9 A1            [ 4]  182 	and	C ;aplica la mascara
+   00FA 32r00r00      [13]  183 	ld	(_SEED),A
+   00FD C9            [10]  184 	ret
+                            185 ;src\MONKEY_MSX.c:246: }
+                            186 	.area _CODE
+                            187 	.area _INITIALIZER
+                            188 	.area _CABS (ABS)
