@@ -1,6 +1,6 @@
                               1 ;--------------------------------------------------------
                               2 ; File Created by SDCC : free open source ANSI-C Compiler
-                              3 ; Version 3.9.0 #11195 (MINGW64)
+                              3 ; Version 4.0.0 #11528 (Linux)
                               4 ;--------------------------------------------------------
                               5 	.module monkey1
                               6 	.optsdcc -mz80
@@ -66,25 +66,25 @@
                              66 ; code
                              67 ;--------------------------------------------------------
                              68 	.area _CODE
-                             69 ;src\monkey1.c:121: void main(void)
+                             69 ;src/monkey1.c:121: void main(void)
                              70 ;	---------------------------------
                              71 ; Function main
                              72 ; ---------------------------------
    0000                      73 _main::
-                             74 ;src\monkey1.c:125: InitializeMonkeys();
+                             74 ;src/monkey1.c:125: InitializeMonkeys();
    0000 CDr00r00      [17]   75 	call	_InitializeMonkeys
-                             76 ;src\monkey1.c:131: __endasm;
+                             76 ;src/monkey1.c:131: __endasm;
    0003 21 B0 F3      [10]   77 	ld	HL,#0xF3B0 ;0xF3B0 system variable
    0006 3E 20         [ 7]   78 	ld	A,#32
    0008 77            [ 7]   79 	ld	(HL),A ;WIDTH(32)
-                             80 ;src\monkey1.c:134: testSPRITES();
-   0009 CDrF2r03      [17]   81 	call	_testSPRITES
-                             82 ;src\monkey1.c:144: WAIT(30*10);
+                             80 ;src/monkey1.c:134: testSPRITES();
+   0009 CDrFAr03      [17]   81 	call	_testSPRITES
+                             82 ;src/monkey1.c:144: WAIT(30*10);
    000C 21 2C 01      [10]   83 	ld	hl, #0x012c
    000F E5            [11]   84 	push	hl
    0010 CDr5Er02      [17]   85 	call	_WAIT
    0013 F1            [10]   86 	pop	af
-                             87 ;src\monkey1.c:158: }
+                             87 ;src/monkey1.c:158: }
    0014 C9            [10]   88 	ret
    0015                      89 _text01:
    0015 4D 6F 6E 6B 65 79    90 	.ascii "Monkey Library Test1 ROM"
@@ -621,12 +621,12 @@
    024C 54                  615 	.db #0x54	; 84	'T'
    024D 56                  616 	.db #0x56	; 86	'V'
    024E 58                  617 	.db #0x58	; 88	'X'
-                            618 ;src\monkey1.c:166: char INKEY() __naked
+                            618 ;src/monkey1.c:166: char INKEY() __naked
                             619 ;	---------------------------------
                             620 ; Function INKEY
                             621 ; ---------------------------------
    024F                     622 _INKEY::
-                            623 ;src\monkey1.c:178: __endasm;
+                            623 ;src/monkey1.c:178: __endasm;
    024F DD E5         [15]  624 	push	IX
    0251 DD 21 00 00   [14]  625 	ld	IX,#0
    0255 DD 39         [15]  626 	add	IX,SP
@@ -634,13 +634,13 @@
    025A 6F            [ 4]  628 	ld	L,A
    025B DD E1         [14]  629 	pop	IX
    025D C9            [10]  630 	ret
-                            631 ;src\monkey1.c:179: }
-                            632 ;src\monkey1.c:185: void WAIT(uint cicles)
+                            631 ;src/monkey1.c:179: }
+                            632 ;src/monkey1.c:185: void WAIT(uint cicles)
                             633 ;	---------------------------------
                             634 ; Function WAIT
                             635 ; ---------------------------------
    025E                     636 _WAIT::
-                            637 ;src\monkey1.c:188: for(i=0;i<cicles;i++) HALT;
+                            637 ;src/monkey1.c:188: for(i=0;i<cicles;i++) HALT;
    025E 01 00 00      [10]  638 	ld	bc, #0x0000
    0261                     639 00103$:
    0261 21 02 00      [10]  640 	ld	hl, #2
@@ -653,14 +653,14 @@
    026A D0            [11]  647 	ret	NC
    026B 76            [ 4]  648 	halt	
    026C 03            [ 6]  649 	inc	bc
-                            650 ;src\monkey1.c:189: }
+                            650 ;src/monkey1.c:189: }
    026D 18 F2         [12]  651 	jr	00103$
-                            652 ;src\monkey1.c:192: void CLS()
+                            652 ;src/monkey1.c:192: void CLS()
                             653 ;	---------------------------------
                             654 ; Function CLS
                             655 ; ---------------------------------
    026F                     656 _CLS::
-                            657 ;src\monkey1.c:194: FillVRAM (BASE5, 0x300, 32);
+                            657 ;src/monkey1.c:194: FillVRAM (BASE5, 0x300, 32);
    026F 3E 20         [ 7]  658 	ld	a, #0x20
    0271 F5            [11]  659 	push	af
    0272 33            [ 6]  660 	inc	sp
@@ -668,13 +668,13 @@
    0276 E5            [11]  662 	push	hl
    0277 26 18         [ 7]  663 	ld	h, #0x18
    0279 E5            [11]  664 	push	hl
-   027A CDr89r03      [17]  665 	call	_FillVRAM
+   027A CDr91r03      [17]  665 	call	_FillVRAM
    027D F1            [10]  666 	pop	af
    027E F1            [10]  667 	pop	af
    027F 33            [ 6]  668 	inc	sp
-                            669 ;src\monkey1.c:195: }
+                            669 ;src/monkey1.c:195: }
    0280 C9            [10]  670 	ret
-                            671 ;src\monkey1.c:199: void VPRINT(byte column, byte line, char* text)
+                            671 ;src/monkey1.c:199: void VPRINT(byte column, byte line, char* text)
                             672 ;	---------------------------------
                             673 ; Function VPRINT
                             674 ; ---------------------------------
@@ -682,7 +682,7 @@
    0281 DD E5         [15]  676 	push	ix
    0283 DD 21 00 00   [14]  677 	ld	ix,#0
    0287 DD 39         [15]  678 	add	ix,sp
-                            679 ;src\monkey1.c:201: uint vaddr = BASE5 + (line*32)+column; // calcula la posicion en la VRAM
+                            679 ;src/monkey1.c:201: uint vaddr = BASE5 + (line*32)+column; // calcula la posicion en la VRAM
    0289 DD 6E 05      [19]  680 	ld	l, 5 (ix)
    028C 26 00         [ 7]  681 	ld	h, #0x00
    028E 29            [11]  682 	add	hl, hl
@@ -695,7 +695,7 @@
    0297 DD 4E 04      [19]  689 	ld	c, 4 (ix)
    029A 06 00         [ 7]  690 	ld	b, #0x00
    029C 09            [11]  691 	add	hl, bc
-                            692 ;src\monkey1.c:202: VPOKEARRAY(vaddr, text);
+                            692 ;src/monkey1.c:202: VPOKEARRAY(vaddr, text);
    029D DD 4E 06      [19]  693 	ld	c, 6 (ix)
    02A0 DD 46 07      [19]  694 	ld	b, 7 (ix)
    02A3 C5            [11]  695 	push	bc
@@ -703,10 +703,10 @@
    02A5 CDrADr02      [17]  697 	call	_VPOKEARRAY
    02A8 F1            [10]  698 	pop	af
    02A9 F1            [10]  699 	pop	af
-                            700 ;src\monkey1.c:203: }
+                            700 ;src/monkey1.c:203: }
    02AA DD E1         [14]  701 	pop	ix
    02AC C9            [10]  702 	ret
-                            703 ;src\monkey1.c:207: void VPOKEARRAY(uint vaddr, char* text)
+                            703 ;src/monkey1.c:207: void VPOKEARRAY(uint vaddr, char* text)
                             704 ;	---------------------------------
                             705 ; Function VPOKEARRAY
                             706 ; ---------------------------------
@@ -714,623 +714,629 @@
    02AD DD E5         [15]  708 	push	ix
    02AF DD 21 00 00   [14]  709 	ld	ix,#0
    02B3 DD 39         [15]  710 	add	ix,sp
-                            711 ;src\monkey1.c:209: while(*(text)) VPOKE(vaddr++,*(text++));
-   02B5 DD 4E 06      [19]  712 	ld	c, 6 (ix)
-   02B8 DD 46 07      [19]  713 	ld	b, 7 (ix)
-   02BB DD 5E 04      [19]  714 	ld	e, 4 (ix)
-   02BE DD 56 05      [19]  715 	ld	d, 5 (ix)
-   02C1                     716 00101$:
-   02C1 0A            [ 7]  717 	ld	a, (bc)
-   02C2 B7            [ 4]  718 	or	a, a
-   02C3 28 1B         [12]  719 	jr	Z,00104$
-   02C5 67            [ 4]  720 	ld	h, a
-   02C6 03            [ 6]  721 	inc	bc
-   02C7 D5            [11]  722 	push	de
-   02C8 FD E1         [14]  723 	pop	iy
-   02CA 13            [ 6]  724 	inc	de
-   02CB DD 73 04      [19]  725 	ld	4 (ix), e
-   02CE DD 72 05      [19]  726 	ld	5 (ix), d
-   02D1 C5            [11]  727 	push	bc
-   02D2 D5            [11]  728 	push	de
-   02D3 E5            [11]  729 	push	hl
-   02D4 33            [ 6]  730 	inc	sp
-   02D5 FD E5         [15]  731 	push	iy
-   02D7 CDr5Dr03      [17]  732 	call	_VPOKE
-   02DA F1            [10]  733 	pop	af
-   02DB 33            [ 6]  734 	inc	sp
-   02DC D1            [10]  735 	pop	de
-   02DD C1            [10]  736 	pop	bc
-   02DE 18 E1         [12]  737 	jr	00101$
-   02E0                     738 00104$:
-                            739 ;src\monkey1.c:210: }
-   02E0 DD E1         [14]  740 	pop	ix
-   02E2 C9            [10]  741 	ret
-                            742 ;src\monkey1.c:220: void LOCATE(char x, char y) __naked
-                            743 ;	---------------------------------
-                            744 ; Function LOCATE
-                            745 ; ---------------------------------
-   02E3                     746 _LOCATE::
-                            747 ;src\monkey1.c:238: __endasm;
-   02E3 DD E5         [15]  748 	push	IX
-   02E5 DD 21 00 00   [14]  749 	ld	IX,#0
-   02E9 DD 39         [15]  750 	add	IX,SP
-   02EB DD 7E 04      [19]  751 	ld	A,4(IX) ;x
-   02EE 3C            [ 4]  752 	inc	A ;incrementa las posiciones para que se situen correctamente en la pantalla
-   02EF 67            [ 4]  753 	ld	H,A
-   02F0 DD 7E 05      [19]  754 	ld	A,5(IX) ;y
-   02F3 3C            [ 4]  755 	inc	A
-   02F4 6F            [ 4]  756 	ld	L,A
-   02F5 CD C6 00      [17]  757 	call	0x00C6
-   02F8 DD E1         [14]  758 	pop	IX
-   02FA C9            [10]  759 	ret
-                            760 ;src\monkey1.c:240: }
-                            761 ;src\monkey1.c:247: void PRINT(char* text) __naked
-                            762 ;	---------------------------------
-                            763 ; Function PRINT
-                            764 ; ---------------------------------
-   02FB                     765 _PRINT::
-                            766 ;src\monkey1.c:269: __endasm; 
-   02FB DD E5         [15]  767 	push	IX
-   02FD DD 21 00 00   [14]  768 	ld	IX,#0
-   0301 DD 39         [15]  769 	add	IX,SP
-   0303 DD 6E 04      [19]  770 	ld	L,4(ix)
-   0306 DD 66 05      [19]  771 	ld	H,5(ix)
-   0309                     772 	nextCHAR:
-   0309 7E            [ 7]  773 	ld	A,(HL)
-   030A B7            [ 4]  774 	or	A
-   030B 28 06         [12]  775 	jr	Z,ENDnext
-   030D CD A2 00      [17]  776 	call	0x00A2
-   0310 23            [ 6]  777 	inc	HL
-   0311 18 F6         [12]  778 	jr	nextCHAR
-   0313                     779 	ENDnext:
-   0313 DD E1         [14]  780 	pop	IX
-   0315 C9            [10]  781 	ret
-                            782 ;src\monkey1.c:270: }
-                            783 ;src\monkey1.c:275: char PEEK(uint address) __naked
-                            784 ;	---------------------------------
-                            785 ; Function PEEK
-                            786 ; ---------------------------------
-   0316                     787 _PEEK::
-                            788 ;src\monkey1.c:290: __endasm;
-   0316 DD E5         [15]  789 	push	IX
-   0318 DD 21 00 00   [14]  790 	ld	IX,#0
-   031C DD 39         [15]  791 	add	IX,SP
-   031E DD 6E 04      [19]  792 	ld	L,4(IX)
-   0321 DD 66 05      [19]  793 	ld	H,5(IX)
-   0324 6E            [ 7]  794 	ld	L,(HL)
-   0325 DD E1         [14]  795 	pop	IX
-   0327 C9            [10]  796 	ret
-                            797 ;src\monkey1.c:291: }
-                            798 ;src\monkey1.c:296: uint PEEKW(uint address) __naked
-                            799 ;	---------------------------------
-                            800 ; Function PEEKW
-                            801 ; ---------------------------------
-   0328                     802 _PEEKW::
-                            803 ;src\monkey1.c:313: __endasm;
-   0328 DD E5         [15]  804 	push	IX
-   032A DD 21 00 00   [14]  805 	ld	IX,#0
-   032E DD 39         [15]  806 	add	IX,SP
-   0330 DD 6E 04      [19]  807 	ld	L,4(ix)
-   0333 DD 66 05      [19]  808 	ld	H,5(ix)
-   0336 5E            [ 7]  809 	ld	E,(HL)
-   0337 23            [ 6]  810 	inc	HL
-   0338 56            [ 7]  811 	ld	D,(HL)
-   0339 EB            [ 4]  812 	ex	DE,HL
-   033A DD E1         [14]  813 	pop	IX
-   033C C9            [10]  814 	ret
-                            815 ;src\monkey1.c:314: }
-                            816 ;src\monkey1.c:326: void COLOR(char ink, char background, char border) __naked
-                            817 ;	---------------------------------
-                            818 ; Function COLOR
-                            819 ; ---------------------------------
-   033D                     820 _COLOR::
-                            821 ;src\monkey1.c:349: __endasm;
-   033D DD E5         [15]  822 	push	IX
-   033F DD 21 00 00   [14]  823 	ld	IX,#0
-   0343 DD 39         [15]  824 	add	IX,SP
-   0345 DD 7E 04      [19]  825 	ld	A,4(IX)
-   0348 32 E9 F3      [13]  826 	ld	(0xF3E9),A
-   034B DD 7E 05      [19]  827 	ld	A,5(IX)
-   034E 32 EA F3      [13]  828 	ld	(0xF3EA),A
-   0351 DD 7E 06      [19]  829 	ld	A,6(IX)
-   0354 32 EB F3      [13]  830 	ld	(0xF3EB),A
-   0357 CD 62 00      [17]  831 	call	0x0062
-   035A DD E1         [14]  832 	pop	IX
-   035C C9            [10]  833 	ret
-                            834 ;src\monkey1.c:350: }
-                            835 ;src\monkey1.c:361: void VPOKE(unsigned int vaddr, char value) __naked
-                            836 ;	---------------------------------
-                            837 ; Function VPOKE
-                            838 ; ---------------------------------
-   035D                     839 _VPOKE::
-                            840 ;src\monkey1.c:379: __endasm;
-   035D DD E5         [15]  841 	push	IX
-   035F DD 21 00 00   [14]  842 	ld	IX,#0
-   0363 DD 39         [15]  843 	add	IX,SP
-   0365 DD 6E 04      [19]  844 	ld	L,4(IX)
-   0368 DD 66 05      [19]  845 	ld	H,5(IX)
-   036B DD 7E 06      [19]  846 	ld	A,6(IX)
-   036E CD 4D 00      [17]  847 	call	0x004D
-   0371 DD E1         [14]  848 	pop	IX
-   0373 C9            [10]  849 	ret
-                            850 ;src\monkey1.c:380: }
-                            851 ;src\monkey1.c:390: char VPEEK(unsigned int vaddr) __naked
-                            852 ;	---------------------------------
-                            853 ; Function VPEEK
-                            854 ; ---------------------------------
-   0374                     855 _VPEEK::
-                            856 ;src\monkey1.c:407: __endasm;
-   0374 DD E5         [15]  857 	push	IX
-   0376 DD 21 00 00   [14]  858 	ld	IX,#0
-   037A DD 39         [15]  859 	add	IX,SP
-   037C DD 6E 04      [19]  860 	ld	L,4(IX)
-   037F DD 66 05      [19]  861 	ld	H,5(IX)
-   0382 CD 4A 00      [17]  862 	call	0x004A
-   0385 6F            [ 4]  863 	ld	L,A
-   0386 DD E1         [14]  864 	pop	IX
-   0388 C9            [10]  865 	ret
-                            866 ;src\monkey1.c:408: }
-                            867 ;src\monkey1.c:420: void FillVRAM(unsigned int vaddr, unsigned int length, char value) __naked
-                            868 ;	---------------------------------
-                            869 ; Function FillVRAM
-                            870 ; ---------------------------------
-   0389                     871 _FillVRAM::
-                            872 ;src\monkey1.c:442: __endasm;
-   0389 DD E5         [15]  873 	push	IX
-   038B DD 21 00 00   [14]  874 	ld	IX,#0
-   038F DD 39         [15]  875 	add	IX,SP
-   0391 DD 6E 04      [19]  876 	ld	L,4(IX) ; vaddress
-   0394 DD 66 05      [19]  877 	ld	H,5(IX)
-   0397 DD 4E 06      [19]  878 	ld	C,6(IX) ;length
-   039A DD 46 07      [19]  879 	ld	B,7(IX)
-   039D DD 7E 08      [19]  880 	ld	A,8(IX) ;value
-   03A0 CD 56 00      [17]  881 	call	0x0056
-   03A3 DD E1         [14]  882 	pop	IX
-   03A5 C9            [10]  883 	ret
-                            884 ;src\monkey1.c:443: }
-                            885 ;src\monkey1.c:455: void CopyToVRAM(unsigned int addr, unsigned int vaddr, unsigned int length) __naked
-                            886 ;	---------------------------------
-                            887 ; Function CopyToVRAM
-                            888 ; ---------------------------------
-   03A6                     889 _CopyToVRAM::
-                            890 ;src\monkey1.c:478: __endasm;
-   03A6 DD E5         [15]  891 	push	IX
-   03A8 DD 21 00 00   [14]  892 	ld	IX,#0
-   03AC DD 39         [15]  893 	add	IX,SP
-   03AE DD 6E 04      [19]  894 	ld	L,4(IX) ;ram address
-   03B1 DD 66 05      [19]  895 	ld	H,5(IX)
-   03B4 DD 5E 06      [19]  896 	ld	E,6(IX) ;VRAM address
-   03B7 DD 56 07      [19]  897 	ld	D,7(IX)
-   03BA DD 4E 08      [19]  898 	ld	C,8(IX) ;length
-   03BD DD 46 09      [19]  899 	ld	B,9(IX)
-   03C0 CD 5C 00      [17]  900 	call	0x005C
-   03C3 DD E1         [14]  901 	pop	IX
-   03C5 C9            [10]  902 	ret
-                            903 ;src\monkey1.c:479: }
-                            904 ;src\monkey1.c:484: void setFont()
-                            905 ;	---------------------------------
-                            906 ; Function setFont
-                            907 ; ---------------------------------
-   03C6                     908 _setFont::
-                            909 ;src\monkey1.c:486: uint ROMfont = PEEKW(CGTABL);
-   03C6 21 04 00      [10]  910 	ld	hl, #0x0004
-   03C9 E5            [11]  911 	push	hl
-   03CA CDr28r03      [17]  912 	call	_PEEKW
-   03CD F1            [10]  913 	pop	af
-                            914 ;src\monkey1.c:488: CopyToVRAM(ROMfont,BASE7,0x800);       //MSX font pattern
-   03CE 01 00 08      [10]  915 	ld	bc, #0x0800
-   03D1 C5            [11]  916 	push	bc
-   03D2 01 00 00      [10]  917 	ld	bc, #0x0000
-   03D5 C5            [11]  918 	push	bc
-   03D6 E5            [11]  919 	push	hl
-   03D7 CDrA6r03      [17]  920 	call	_CopyToVRAM
-   03DA 21 06 00      [10]  921 	ld	hl, #6
-   03DD 39            [11]  922 	add	hl, sp
-   03DE F9            [ 6]  923 	ld	sp, hl
-                            924 ;src\monkey1.c:490: FillVRAM(BASE6,32,0xF4);           //colors
-   03DF 3E F4         [ 7]  925 	ld	a, #0xf4
-   03E1 F5            [11]  926 	push	af
-   03E2 33            [ 6]  927 	inc	sp
-   03E3 21 20 00      [10]  928 	ld	hl, #0x0020
-   03E6 E5            [11]  929 	push	hl
-   03E7 21 00 20      [10]  930 	ld	hl, #0x2000
-   03EA E5            [11]  931 	push	hl
-   03EB CDr89r03      [17]  932 	call	_FillVRAM
-   03EE F1            [10]  933 	pop	af
-   03EF F1            [10]  934 	pop	af
-   03F0 33            [ 6]  935 	inc	sp
-                            936 ;src\monkey1.c:492: return;
-                            937 ;src\monkey1.c:493: }
-   03F1 C9            [10]  938 	ret
-                            939 ;src\monkey1.c:499: void testSPRITES()
-                            940 ;	---------------------------------
-                            941 ; Function testSPRITES
-                            942 ; ---------------------------------
-   03F2                     943 _testSPRITES::
-   03F2 DD E5         [15]  944 	push	ix
-   03F4 DD 21 00 00   [14]  945 	ld	ix,#0
-   03F8 DD 39         [15]  946 	add	ix,sp
-   03FA F5            [11]  947 	push	af
-   03FB F5            [11]  948 	push	af
-                            949 ;src\monkey1.c:504: char frame=0;
-   03FC DD 36 FC 00   [19]  950 	ld	-4 (ix), #0x00
-                            951 ;src\monkey1.c:511: VPRINT(0,cursorLine++, text01);
-   0400 21r15r00      [10]  952 	ld	hl, #_text01
-   0403 E5            [11]  953 	push	hl
-   0404 AF            [ 4]  954 	xor	a, a
-   0405 F5            [11]  955 	push	af
-   0406 33            [ 6]  956 	inc	sp
-   0407 AF            [ 4]  957 	xor	a, a
-   0408 F5            [11]  958 	push	af
-   0409 33            [ 6]  959 	inc	sp
-   040A CDr81r02      [17]  960 	call	_VPRINT
-   040D F1            [10]  961 	pop	af
-                            962 ;src\monkey1.c:512: VPRINT(0,cursorLine++, text02);
-   040E 21r2Er00      [10]  963 	ld	hl, #_text02
-   0411 E3            [19]  964 	ex	(sp),hl
-   0412 3E 01         [ 7]  965 	ld	a, #0x01
-   0414 F5            [11]  966 	push	af
-   0415 33            [ 6]  967 	inc	sp
-   0416 AF            [ 4]  968 	xor	a, a
-   0417 F5            [11]  969 	push	af
-   0418 33            [ 6]  970 	inc	sp
-   0419 CDr81r02      [17]  971 	call	_VPRINT
-   041C F1            [10]  972 	pop	af
-                            973 ;src\monkey1.c:516: VPRINT(0,cursorLine++, "-----------------Test Functions");
-   041D 21r6Cr05      [10]  974 	ld	hl, #___str_2
-   0420 E3            [19]  975 	ex	(sp),hl
-   0421 3E 02         [ 7]  976 	ld	a, #0x02
-   0423 F5            [11]  977 	push	af
-   0424 33            [ 6]  978 	inc	sp
-   0425 AF            [ 4]  979 	xor	a, a
-   0426 F5            [11]  980 	push	af
-   0427 33            [ 6]  981 	inc	sp
-   0428 CDr81r02      [17]  982 	call	_VPRINT
-   042B F1            [10]  983 	pop	af
-                            984 ;src\monkey1.c:520: VPRINT(0,cursorLine++, "ShowMonkey(plane,x,y,color)"); 
-   042C 21r8Cr05      [10]  985 	ld	hl, #___str_3
-   042F E3            [19]  986 	ex	(sp),hl
-   0430 3E 03         [ 7]  987 	ld	a, #0x03
-   0432 F5            [11]  988 	push	af
-   0433 33            [ 6]  989 	inc	sp
-   0434 AF            [ 4]  990 	xor	a, a
-   0435 F5            [11]  991 	push	af
-   0436 33            [ 6]  992 	inc	sp
-   0437 CDr81r02      [17]  993 	call	_VPRINT
-   043A F1            [10]  994 	pop	af
-   043B F1            [10]  995 	pop	af
-                            996 ;src\monkey1.c:521: showSprites();
-   043C CDr08r06      [17]  997 	call	_showSprites
-                            998 ;src\monkey1.c:522: WAIT(100);
-   043F 21 64 00      [10]  999 	ld	hl, #0x0064
-   0442 E5            [11] 1000 	push	hl
-   0443 CDr5Er02      [17] 1001 	call	_WAIT
-                           1002 ;src\monkey1.c:525: VPRINT(0,cursorLine++, "UpdateMonkeyFrame(plane,frame)"); 
-   0446 21rA8r05      [10] 1003 	ld	hl, #___str_4
-   0449 E3            [19] 1004 	ex	(sp),hl
-   044A 3E 04         [ 7] 1005 	ld	a, #0x04
-   044C F5            [11] 1006 	push	af
-   044D 33            [ 6] 1007 	inc	sp
-   044E AF            [ 4] 1008 	xor	a, a
-   044F F5            [11] 1009 	push	af
-   0450 33            [ 6] 1010 	inc	sp
-   0451 CDr81r02      [17] 1011 	call	_VPRINT
-   0454 F1            [10] 1012 	pop	af
-   0455 F1            [10] 1013 	pop	af
-                           1014 ;src\monkey1.c:526: for(i=0;i<20;i++)
-   0456 01 00 00      [10] 1015 	ld	bc, #0x0000
-   0459                    1016 00112$:
-                           1017 ;src\monkey1.c:528: WAIT(16);
-   0459 C5            [11] 1018 	push	bc
-   045A 21 10 00      [10] 1019 	ld	hl, #0x0010
-   045D E5            [11] 1020 	push	hl
-   045E CDr5Er02      [17] 1021 	call	_WAIT
-   0461 F1            [10] 1022 	pop	af
-   0462 C1            [10] 1023 	pop	bc
-                           1024 ;src\monkey1.c:529: for(plane=0;plane<32;plane++) UpdateMonkeyFrame(plane,1);
-   0463 16 00         [ 7] 1025 	ld	d, #0x00
-   0465                    1026 00108$:
-   0465 C5            [11] 1027 	push	bc
-   0466 D5            [11] 1028 	push	de
-   0467 3E 01         [ 7] 1029 	ld	a, #0x01
-   0469 F5            [11] 1030 	push	af
-   046A 33            [ 6] 1031 	inc	sp
-   046B D5            [11] 1032 	push	de
-   046C 33            [ 6] 1033 	inc	sp
-   046D CDr00r00      [17] 1034 	call	_UpdateMonkeyFrame
-   0470 F1            [10] 1035 	pop	af
-   0471 D1            [10] 1036 	pop	de
-   0472 C1            [10] 1037 	pop	bc
-   0473 14            [ 4] 1038 	inc	d
-   0474 7A            [ 4] 1039 	ld	a, d
-   0475 D6 20         [ 7] 1040 	sub	a, #0x20
-   0477 38 EC         [12] 1041 	jr	C,00108$
-                           1042 ;src\monkey1.c:530: WAIT(16);
-   0479 C5            [11] 1043 	push	bc
-   047A 21 10 00      [10] 1044 	ld	hl, #0x0010
-   047D E5            [11] 1045 	push	hl
-   047E CDr5Er02      [17] 1046 	call	_WAIT
-   0481 F1            [10] 1047 	pop	af
-   0482 C1            [10] 1048 	pop	bc
-                           1049 ;src\monkey1.c:531: for(plane=0;plane<32;plane++) UpdateMonkeyFrame(plane,0);
-   0483 16 00         [ 7] 1050 	ld	d, #0x00
-   0485                    1051 00110$:
-   0485 C5            [11] 1052 	push	bc
-   0486 D5            [11] 1053 	push	de
-   0487 AF            [ 4] 1054 	xor	a, a
-   0488 F5            [11] 1055 	push	af
-   0489 33            [ 6] 1056 	inc	sp
-   048A D5            [11] 1057 	push	de
-   048B 33            [ 6] 1058 	inc	sp
-   048C CDr00r00      [17] 1059 	call	_UpdateMonkeyFrame
-   048F F1            [10] 1060 	pop	af
-   0490 D1            [10] 1061 	pop	de
-   0491 C1            [10] 1062 	pop	bc
-   0492 14            [ 4] 1063 	inc	d
-   0493 7A            [ 4] 1064 	ld	a, d
-   0494 D6 20         [ 7] 1065 	sub	a, #0x20
-   0496 38 ED         [12] 1066 	jr	C,00110$
-                           1067 ;src\monkey1.c:526: for(i=0;i<20;i++)
-   0498 03            [ 6] 1068 	inc	bc
-   0499 79            [ 4] 1069 	ld	a, c
-   049A D6 14         [ 7] 1070 	sub	a, #0x14
-   049C 78            [ 4] 1071 	ld	a, b
-   049D DE 00         [ 7] 1072 	sbc	a, #0x00
-   049F 38 B8         [12] 1073 	jr	C,00112$
-                           1074 ;src\monkey1.c:535: VPRINT(0,cursorLine++, "ClearMonkeys()");
-   04A1 21rC7r05      [10] 1075 	ld	hl, #___str_5
-   04A4 E5            [11] 1076 	push	hl
-   04A5 3E 05         [ 7] 1077 	ld	a, #0x05
-   04A7 F5            [11] 1078 	push	af
-   04A8 33            [ 6] 1079 	inc	sp
-   04A9 AF            [ 4] 1080 	xor	a, a
-   04AA F5            [11] 1081 	push	af
-   04AB 33            [ 6] 1082 	inc	sp
-   04AC CDr81r02      [17] 1083 	call	_VPRINT
-   04AF F1            [10] 1084 	pop	af
-   04B0 F1            [10] 1085 	pop	af
-                           1086 ;src\monkey1.c:536: ClearMonkeys();
-   04B1 CDr00r00      [17] 1087 	call	_ClearMonkeys
-                           1088 ;src\monkey1.c:537: WAIT(100);
-   04B4 21 64 00      [10] 1089 	ld	hl, #0x0064
-   04B7 E5            [11] 1090 	push	hl
-   04B8 CDr5Er02      [17] 1091 	call	_WAIT
-                           1092 ;src\monkey1.c:541: VPRINT(0,cursorLine++, "Monkeys Dancing");
-   04BB 21rD6r05      [10] 1093 	ld	hl, #___str_6
-   04BE E3            [19] 1094 	ex	(sp),hl
-   04BF 3E 06         [ 7] 1095 	ld	a, #0x06
-   04C1 F5            [11] 1096 	push	af
-   04C2 33            [ 6] 1097 	inc	sp
-   04C3 AF            [ 4] 1098 	xor	a, a
-   04C4 F5            [11] 1099 	push	af
-   04C5 33            [ 6] 1100 	inc	sp
-   04C6 CDr81r02      [17] 1101 	call	_VPRINT
-   04C9 F1            [10] 1102 	pop	af
-   04CA F1            [10] 1103 	pop	af
-                           1104 ;src\monkey1.c:542: for(i=0;i<2048;i++)
-   04CB DD 36 FD 00   [19] 1105 	ld	-3 (ix), #0x00
-   04CF DD 36 FE 00   [19] 1106 	ld	-2 (ix), #0x00
-   04D3 DD 36 FF 00   [19] 1107 	ld	-1 (ix), #0x00
-   04D7                    1108 00116$:
-                           1109 ;src\monkey1.c:544: HALT;    
-   04D7 76            [ 4] 1110 	halt	
-                           1111 ;src\monkey1.c:546: for(plane=0;plane<32;plane++)
-   04D8 DD 7E FC      [19] 1112 	ld	a, -4 (ix)
-   04DB 07            [ 4] 1113 	rlca
-   04DC 07            [ 4] 1114 	rlca
-   04DD 07            [ 4] 1115 	rlca
-   04DE 07            [ 4] 1116 	rlca
-   04DF E6 0F         [ 7] 1117 	and	a, #0x0f
-   04E1 4F            [ 4] 1118 	ld	c, a
-   04E2 06 00         [ 7] 1119 	ld	b, #0x00
-   04E4                    1120 00114$:
-                           1121 ;src\monkey1.c:548: posMonkey = grade + (plane*8);
-   04E4 78            [ 4] 1122 	ld	a, b
-   04E5 87            [ 4] 1123 	add	a, a
-   04E6 87            [ 4] 1124 	add	a, a
-   04E7 87            [ 4] 1125 	add	a, a
-   04E8 5F            [ 4] 1126 	ld	e, a
-   04E9 DD 7E FD      [19] 1127 	ld	a, -3 (ix)
-   04EC 83            [ 4] 1128 	add	a, e
-   04ED 5F            [ 4] 1129 	ld	e, a
-                           1130 ;src\monkey1.c:549: ShowMonkey(plane, posX[posMonkey], posY[posMonkey], 8);
-   04EE 21r4Fr01      [10] 1131 	ld	hl, #_posY
-   04F1 16 00         [ 7] 1132 	ld	d, #0x00
-   04F3 19            [11] 1133 	add	hl, de
-   04F4 56            [ 7] 1134 	ld	d, (hl)
-   04F5 7B            [ 4] 1135 	ld	a, e
-   04F6 C6r4F         [ 7] 1136 	add	a, #<(_posX)
-   04F8 6F            [ 4] 1137 	ld	l, a
-   04F9 3E 00         [ 7] 1138 	ld	a, #0x00
-   04FB CEs00         [ 7] 1139 	adc	a, #>(_posX)
-   04FD 67            [ 4] 1140 	ld	h, a
-   04FE 5E            [ 7] 1141 	ld	e, (hl)
-   04FF C5            [11] 1142 	push	bc
-   0500 3E 08         [ 7] 1143 	ld	a, #0x08
-   0502 F5            [11] 1144 	push	af
-   0503 33            [ 6] 1145 	inc	sp
-   0504 D5            [11] 1146 	push	de
-   0505 C5            [11] 1147 	push	bc
-   0506 33            [ 6] 1148 	inc	sp
-   0507 CDr00r00      [17] 1149 	call	_ShowMonkey
-   050A F1            [10] 1150 	pop	af
-   050B F1            [10] 1151 	pop	af
-   050C C1            [10] 1152 	pop	bc
-                           1153 ;src\monkey1.c:551: UpdateMonkeyFrame(plane,frame>>4);           
-   050D C5            [11] 1154 	push	bc
-   050E 79            [ 4] 1155 	ld	a, c
-   050F F5            [11] 1156 	push	af
-   0510 33            [ 6] 1157 	inc	sp
-   0511 C5            [11] 1158 	push	bc
-   0512 33            [ 6] 1159 	inc	sp
-   0513 CDr00r00      [17] 1160 	call	_UpdateMonkeyFrame
-   0516 F1            [10] 1161 	pop	af
-   0517 C1            [10] 1162 	pop	bc
-                           1163 ;src\monkey1.c:546: for(plane=0;plane<32;plane++)
-   0518 04            [ 4] 1164 	inc	b
-   0519 78            [ 4] 1165 	ld	a, b
-   051A D6 20         [ 7] 1166 	sub	a, #0x20
-   051C 38 C6         [12] 1167 	jr	C,00114$
-                           1168 ;src\monkey1.c:554: frame++;
-   051E DD 34 FC      [23] 1169 	inc	-4 (ix)
-                           1170 ;src\monkey1.c:555: if (frame>31) frame = 0; 
-   0521 3E 1F         [ 7] 1171 	ld	a, #0x1f
-   0523 DD 96 FC      [19] 1172 	sub	a, -4 (ix)
-   0526 30 04         [12] 1173 	jr	NC,00106$
-   0528 DD 36 FC 00   [19] 1174 	ld	-4 (ix), #0x00
-   052C                    1175 00106$:
-                           1176 ;src\monkey1.c:557: grade++;
-   052C DD 34 FD      [23] 1177 	inc	-3 (ix)
-                           1178 ;src\monkey1.c:542: for(i=0;i<2048;i++)
-   052F DD 34 FE      [23] 1179 	inc	-2 (ix)
-   0532 20 03         [12] 1180 	jr	NZ,00180$
-   0534 DD 34 FF      [23] 1181 	inc	-1 (ix)
-   0537                    1182 00180$:
-   0537 DD 7E FF      [19] 1183 	ld	a, -1 (ix)
-   053A D6 08         [ 7] 1184 	sub	a, #0x08
-   053C 38 99         [12] 1185 	jr	C,00116$
-                           1186 ;src\monkey1.c:565: VPRINT(0,cursorLine, "Press any key.");
-   053E 21rE6r05      [10] 1187 	ld	hl, #___str_7
-   0541 E5            [11] 1188 	push	hl
-   0542 3E 0A         [ 7] 1189 	ld	a, #0x0a
-   0544 F5            [11] 1190 	push	af
-   0545 33            [ 6] 1191 	inc	sp
-   0546 AF            [ 4] 1192 	xor	a, a
-   0547 F5            [11] 1193 	push	af
-   0548 33            [ 6] 1194 	inc	sp
-   0549 CDr81r02      [17] 1195 	call	_VPRINT
-   054C F1            [10] 1196 	pop	af
-   054D F1            [10] 1197 	pop	af
-                           1198 ;src\monkey1.c:566: LOCATE(14,cursorLine);
-   054E 11 0E 0A      [10] 1199 	ld	de, #0x0a0e
-   0551 D5            [11] 1200 	push	de
-   0552 CDrE3r02      [17] 1201 	call	_LOCATE
-   0555 F1            [10] 1202 	pop	af
-                           1203 ;src\monkey1.c:567: key = INKEY();
-   0556 CDr4Fr02      [17] 1204 	call	_INKEY
-                           1205 ;src\monkey1.c:571: VPRINT(0,cursorLine,"End of the test...");
-   0559 21rF5r05      [10] 1206 	ld	hl, #___str_8
-   055C E5            [11] 1207 	push	hl
-   055D 3E 0C         [ 7] 1208 	ld	a, #0x0c
-   055F F5            [11] 1209 	push	af
-   0560 33            [ 6] 1210 	inc	sp
-   0561 AF            [ 4] 1211 	xor	a, a
-   0562 F5            [11] 1212 	push	af
-   0563 33            [ 6] 1213 	inc	sp
-   0564 CDr81r02      [17] 1214 	call	_VPRINT
-                           1215 ;src\monkey1.c:573: }
-   0567 DD F9         [10] 1216 	ld	sp,ix
-   0569 DD E1         [14] 1217 	pop	ix
-   056B C9            [10] 1218 	ret
-   056C                    1219 ___str_2:
-   056C 2D 2D 2D 2D 2D 2D  1220 	.ascii "-----------------Test Functions"
+   02B5 F5            [11]  711 	push	af
+                            712 ;src/monkey1.c:209: while(*(text)) VPOKE(vaddr++,*(text++));
+   02B6 DD 4E 06      [19]  713 	ld	c, 6 (ix)
+   02B9 DD 46 07      [19]  714 	ld	b, 7 (ix)
+   02BC DD 5E 04      [19]  715 	ld	e, 4 (ix)
+   02BF DD 56 05      [19]  716 	ld	d, 5 (ix)
+   02C2                     717 00101$:
+   02C2 0A            [ 7]  718 	ld	a, (bc)
+   02C3 B7            [ 4]  719 	or	a, a
+   02C4 28 20         [12]  720 	jr	Z,00104$
+   02C6 67            [ 4]  721 	ld	h, a
+   02C7 03            [ 6]  722 	inc	bc
+   02C8 33            [ 6]  723 	inc	sp
+   02C9 33            [ 6]  724 	inc	sp
+   02CA D5            [11]  725 	push	de
+   02CB 13            [ 6]  726 	inc	de
+   02CC DD 73 04      [19]  727 	ld	4 (ix), e
+   02CF DD 72 05      [19]  728 	ld	5 (ix), d
+   02D2 C5            [11]  729 	push	bc
+   02D3 D5            [11]  730 	push	de
+   02D4 E5            [11]  731 	push	hl
+   02D5 33            [ 6]  732 	inc	sp
+   02D6 DD 6E FE      [19]  733 	ld	l, -2 (ix)
+   02D9 DD 66 FF      [19]  734 	ld	h, -1 (ix)
+   02DC E5            [11]  735 	push	hl
+   02DD CDr65r03      [17]  736 	call	_VPOKE
+   02E0 F1            [10]  737 	pop	af
+   02E1 33            [ 6]  738 	inc	sp
+   02E2 D1            [10]  739 	pop	de
+   02E3 C1            [10]  740 	pop	bc
+   02E4 18 DC         [12]  741 	jr	00101$
+   02E6                     742 00104$:
+                            743 ;src/monkey1.c:210: }
+   02E6 DD F9         [10]  744 	ld	sp, ix
+   02E8 DD E1         [14]  745 	pop	ix
+   02EA C9            [10]  746 	ret
+                            747 ;src/monkey1.c:220: void LOCATE(char x, char y) __naked
+                            748 ;	---------------------------------
+                            749 ; Function LOCATE
+                            750 ; ---------------------------------
+   02EB                     751 _LOCATE::
+                            752 ;src/monkey1.c:238: __endasm;
+   02EB DD E5         [15]  753 	push	IX
+   02ED DD 21 00 00   [14]  754 	ld	IX,#0
+   02F1 DD 39         [15]  755 	add	IX,SP
+   02F3 DD 7E 04      [19]  756 	ld	A,4(IX) ;x
+   02F6 3C            [ 4]  757 	inc	A ;incrementa las posiciones para que se situen correctamente en la pantalla
+   02F7 67            [ 4]  758 	ld	H,A
+   02F8 DD 7E 05      [19]  759 	ld	A,5(IX) ;y
+   02FB 3C            [ 4]  760 	inc	A
+   02FC 6F            [ 4]  761 	ld	L,A
+   02FD CD C6 00      [17]  762 	call	0x00C6
+   0300 DD E1         [14]  763 	pop	IX
+   0302 C9            [10]  764 	ret
+                            765 ;src/monkey1.c:240: }
+                            766 ;src/monkey1.c:247: void PRINT(char* text) __naked
+                            767 ;	---------------------------------
+                            768 ; Function PRINT
+                            769 ; ---------------------------------
+   0303                     770 _PRINT::
+                            771 ;src/monkey1.c:269: __endasm; 
+   0303 DD E5         [15]  772 	push	IX
+   0305 DD 21 00 00   [14]  773 	ld	IX,#0
+   0309 DD 39         [15]  774 	add	IX,SP
+   030B DD 6E 04      [19]  775 	ld	L,4(ix)
+   030E DD 66 05      [19]  776 	ld	H,5(ix)
+   0311                     777 	nextCHAR:
+   0311 7E            [ 7]  778 	ld	A,(HL)
+   0312 B7            [ 4]  779 	or	A
+   0313 28 06         [12]  780 	jr	Z,ENDnext
+   0315 CD A2 00      [17]  781 	call	0x00A2
+   0318 23            [ 6]  782 	inc	HL
+   0319 18 F6         [12]  783 	jr	nextCHAR
+   031B                     784 	ENDnext:
+   031B DD E1         [14]  785 	pop	IX
+   031D C9            [10]  786 	ret
+                            787 ;src/monkey1.c:270: }
+                            788 ;src/monkey1.c:275: char PEEK(uint address) __naked
+                            789 ;	---------------------------------
+                            790 ; Function PEEK
+                            791 ; ---------------------------------
+   031E                     792 _PEEK::
+                            793 ;src/monkey1.c:290: __endasm;
+   031E DD E5         [15]  794 	push	IX
+   0320 DD 21 00 00   [14]  795 	ld	IX,#0
+   0324 DD 39         [15]  796 	add	IX,SP
+   0326 DD 6E 04      [19]  797 	ld	L,4(IX)
+   0329 DD 66 05      [19]  798 	ld	H,5(IX)
+   032C 6E            [ 7]  799 	ld	L,(HL)
+   032D DD E1         [14]  800 	pop	IX
+   032F C9            [10]  801 	ret
+                            802 ;src/monkey1.c:291: }
+                            803 ;src/monkey1.c:296: uint PEEKW(uint address) __naked
+                            804 ;	---------------------------------
+                            805 ; Function PEEKW
+                            806 ; ---------------------------------
+   0330                     807 _PEEKW::
+                            808 ;src/monkey1.c:313: __endasm;
+   0330 DD E5         [15]  809 	push	IX
+   0332 DD 21 00 00   [14]  810 	ld	IX,#0
+   0336 DD 39         [15]  811 	add	IX,SP
+   0338 DD 6E 04      [19]  812 	ld	L,4(ix)
+   033B DD 66 05      [19]  813 	ld	H,5(ix)
+   033E 5E            [ 7]  814 	ld	E,(HL)
+   033F 23            [ 6]  815 	inc	HL
+   0340 56            [ 7]  816 	ld	D,(HL)
+   0341 EB            [ 4]  817 	ex	DE,HL
+   0342 DD E1         [14]  818 	pop	IX
+   0344 C9            [10]  819 	ret
+                            820 ;src/monkey1.c:314: }
+                            821 ;src/monkey1.c:326: void COLOR(char ink, char background, char border) __naked
+                            822 ;	---------------------------------
+                            823 ; Function COLOR
+                            824 ; ---------------------------------
+   0345                     825 _COLOR::
+                            826 ;src/monkey1.c:349: __endasm;
+   0345 DD E5         [15]  827 	push	IX
+   0347 DD 21 00 00   [14]  828 	ld	IX,#0
+   034B DD 39         [15]  829 	add	IX,SP
+   034D DD 7E 04      [19]  830 	ld	A,4(IX)
+   0350 32 E9 F3      [13]  831 	ld	(0xF3E9),A
+   0353 DD 7E 05      [19]  832 	ld	A,5(IX)
+   0356 32 EA F3      [13]  833 	ld	(0xF3EA),A
+   0359 DD 7E 06      [19]  834 	ld	A,6(IX)
+   035C 32 EB F3      [13]  835 	ld	(0xF3EB),A
+   035F CD 62 00      [17]  836 	call	0x0062
+   0362 DD E1         [14]  837 	pop	IX
+   0364 C9            [10]  838 	ret
+                            839 ;src/monkey1.c:350: }
+                            840 ;src/monkey1.c:361: void VPOKE(unsigned int vaddr, char value) __naked
+                            841 ;	---------------------------------
+                            842 ; Function VPOKE
+                            843 ; ---------------------------------
+   0365                     844 _VPOKE::
+                            845 ;src/monkey1.c:379: __endasm;
+   0365 DD E5         [15]  846 	push	IX
+   0367 DD 21 00 00   [14]  847 	ld	IX,#0
+   036B DD 39         [15]  848 	add	IX,SP
+   036D DD 6E 04      [19]  849 	ld	L,4(IX)
+   0370 DD 66 05      [19]  850 	ld	H,5(IX)
+   0373 DD 7E 06      [19]  851 	ld	A,6(IX)
+   0376 CD 4D 00      [17]  852 	call	0x004D
+   0379 DD E1         [14]  853 	pop	IX
+   037B C9            [10]  854 	ret
+                            855 ;src/monkey1.c:380: }
+                            856 ;src/monkey1.c:390: char VPEEK(unsigned int vaddr) __naked
+                            857 ;	---------------------------------
+                            858 ; Function VPEEK
+                            859 ; ---------------------------------
+   037C                     860 _VPEEK::
+                            861 ;src/monkey1.c:407: __endasm;
+   037C DD E5         [15]  862 	push	IX
+   037E DD 21 00 00   [14]  863 	ld	IX,#0
+   0382 DD 39         [15]  864 	add	IX,SP
+   0384 DD 6E 04      [19]  865 	ld	L,4(IX)
+   0387 DD 66 05      [19]  866 	ld	H,5(IX)
+   038A CD 4A 00      [17]  867 	call	0x004A
+   038D 6F            [ 4]  868 	ld	L,A
+   038E DD E1         [14]  869 	pop	IX
+   0390 C9            [10]  870 	ret
+                            871 ;src/monkey1.c:408: }
+                            872 ;src/monkey1.c:420: void FillVRAM(unsigned int vaddr, unsigned int length, char value) __naked
+                            873 ;	---------------------------------
+                            874 ; Function FillVRAM
+                            875 ; ---------------------------------
+   0391                     876 _FillVRAM::
+                            877 ;src/monkey1.c:442: __endasm;
+   0391 DD E5         [15]  878 	push	IX
+   0393 DD 21 00 00   [14]  879 	ld	IX,#0
+   0397 DD 39         [15]  880 	add	IX,SP
+   0399 DD 6E 04      [19]  881 	ld	L,4(IX) ; vaddress
+   039C DD 66 05      [19]  882 	ld	H,5(IX)
+   039F DD 4E 06      [19]  883 	ld	C,6(IX) ;length
+   03A2 DD 46 07      [19]  884 	ld	B,7(IX)
+   03A5 DD 7E 08      [19]  885 	ld	A,8(IX) ;value
+   03A8 CD 56 00      [17]  886 	call	0x0056
+   03AB DD E1         [14]  887 	pop	IX
+   03AD C9            [10]  888 	ret
+                            889 ;src/monkey1.c:443: }
+                            890 ;src/monkey1.c:455: void CopyToVRAM(unsigned int addr, unsigned int vaddr, unsigned int length) __naked
+                            891 ;	---------------------------------
+                            892 ; Function CopyToVRAM
+                            893 ; ---------------------------------
+   03AE                     894 _CopyToVRAM::
+                            895 ;src/monkey1.c:478: __endasm;
+   03AE DD E5         [15]  896 	push	IX
+   03B0 DD 21 00 00   [14]  897 	ld	IX,#0
+   03B4 DD 39         [15]  898 	add	IX,SP
+   03B6 DD 6E 04      [19]  899 	ld	L,4(IX) ;ram address
+   03B9 DD 66 05      [19]  900 	ld	H,5(IX)
+   03BC DD 5E 06      [19]  901 	ld	E,6(IX) ;VRAM address
+   03BF DD 56 07      [19]  902 	ld	D,7(IX)
+   03C2 DD 4E 08      [19]  903 	ld	C,8(IX) ;length
+   03C5 DD 46 09      [19]  904 	ld	B,9(IX)
+   03C8 CD 5C 00      [17]  905 	call	0x005C
+   03CB DD E1         [14]  906 	pop	IX
+   03CD C9            [10]  907 	ret
+                            908 ;src/monkey1.c:479: }
+                            909 ;src/monkey1.c:484: void setFont()
+                            910 ;	---------------------------------
+                            911 ; Function setFont
+                            912 ; ---------------------------------
+   03CE                     913 _setFont::
+                            914 ;src/monkey1.c:486: uint ROMfont = PEEKW(CGTABL);
+   03CE 21 04 00      [10]  915 	ld	hl, #0x0004
+   03D1 E5            [11]  916 	push	hl
+   03D2 CDr30r03      [17]  917 	call	_PEEKW
+   03D5 F1            [10]  918 	pop	af
+                            919 ;src/monkey1.c:488: CopyToVRAM(ROMfont,BASE7,0x800);       //MSX font pattern
+   03D6 01 00 08      [10]  920 	ld	bc, #0x0800
+   03D9 C5            [11]  921 	push	bc
+   03DA 01 00 00      [10]  922 	ld	bc, #0x0000
+   03DD C5            [11]  923 	push	bc
+   03DE E5            [11]  924 	push	hl
+   03DF CDrAEr03      [17]  925 	call	_CopyToVRAM
+   03E2 21 06 00      [10]  926 	ld	hl, #6
+   03E5 39            [11]  927 	add	hl, sp
+   03E6 F9            [ 6]  928 	ld	sp, hl
+                            929 ;src/monkey1.c:490: FillVRAM(BASE6,32,0xF4);           //colors
+   03E7 3E F4         [ 7]  930 	ld	a, #0xf4
+   03E9 F5            [11]  931 	push	af
+   03EA 33            [ 6]  932 	inc	sp
+   03EB 21 20 00      [10]  933 	ld	hl, #0x0020
+   03EE E5            [11]  934 	push	hl
+   03EF 21 00 20      [10]  935 	ld	hl, #0x2000
+   03F2 E5            [11]  936 	push	hl
+   03F3 CDr91r03      [17]  937 	call	_FillVRAM
+   03F6 F1            [10]  938 	pop	af
+   03F7 F1            [10]  939 	pop	af
+   03F8 33            [ 6]  940 	inc	sp
+                            941 ;src/monkey1.c:492: return;
+                            942 ;src/monkey1.c:493: }
+   03F9 C9            [10]  943 	ret
+                            944 ;src/monkey1.c:499: void testSPRITES()
+                            945 ;	---------------------------------
+                            946 ; Function testSPRITES
+                            947 ; ---------------------------------
+   03FA                     948 _testSPRITES::
+   03FA DD E5         [15]  949 	push	ix
+   03FC DD 21 00 00   [14]  950 	ld	ix,#0
+   0400 DD 39         [15]  951 	add	ix,sp
+   0402 F5            [11]  952 	push	af
+   0403 F5            [11]  953 	push	af
+                            954 ;src/monkey1.c:504: char frame=0;
+   0404 AF            [ 4]  955 	xor	a, a
+   0405 DD 77 FC      [19]  956 	ld	-4 (ix), a
+                            957 ;src/monkey1.c:511: VPRINT(0,cursorLine++, text01);
+   0408 21r15r00      [10]  958 	ld	hl, #_text01
+   040B E5            [11]  959 	push	hl
+   040C AF            [ 4]  960 	xor	a, a
+   040D F5            [11]  961 	push	af
+   040E 33            [ 6]  962 	inc	sp
+   040F AF            [ 4]  963 	xor	a, a
+   0410 F5            [11]  964 	push	af
+   0411 33            [ 6]  965 	inc	sp
+   0412 CDr81r02      [17]  966 	call	_VPRINT
+   0415 F1            [10]  967 	pop	af
+                            968 ;src/monkey1.c:512: VPRINT(0,cursorLine++, text02);
+   0416 21r2Er00      [10]  969 	ld	hl, #_text02
+   0419 E3            [19]  970 	ex	(sp),hl
+   041A 3E 01         [ 7]  971 	ld	a, #0x01
+   041C F5            [11]  972 	push	af
+   041D 33            [ 6]  973 	inc	sp
+   041E AF            [ 4]  974 	xor	a, a
+   041F F5            [11]  975 	push	af
+   0420 33            [ 6]  976 	inc	sp
+   0421 CDr81r02      [17]  977 	call	_VPRINT
+   0424 F1            [10]  978 	pop	af
+                            979 ;src/monkey1.c:516: VPRINT(0,cursorLine++, "-----------------Test Functions");
+   0425 21r73r05      [10]  980 	ld	hl, #___str_2
+   0428 E3            [19]  981 	ex	(sp),hl
+   0429 3E 02         [ 7]  982 	ld	a, #0x02
+   042B F5            [11]  983 	push	af
+   042C 33            [ 6]  984 	inc	sp
+   042D AF            [ 4]  985 	xor	a, a
+   042E F5            [11]  986 	push	af
+   042F 33            [ 6]  987 	inc	sp
+   0430 CDr81r02      [17]  988 	call	_VPRINT
+   0433 F1            [10]  989 	pop	af
+                            990 ;src/monkey1.c:520: VPRINT(0,cursorLine++, "ShowMonkey(plane,x,y,color)"); 
+   0434 21r93r05      [10]  991 	ld	hl, #___str_3
+   0437 E3            [19]  992 	ex	(sp),hl
+   0438 3E 03         [ 7]  993 	ld	a, #0x03
+   043A F5            [11]  994 	push	af
+   043B 33            [ 6]  995 	inc	sp
+   043C AF            [ 4]  996 	xor	a, a
+   043D F5            [11]  997 	push	af
+   043E 33            [ 6]  998 	inc	sp
+   043F CDr81r02      [17]  999 	call	_VPRINT
+   0442 F1            [10] 1000 	pop	af
+   0443 F1            [10] 1001 	pop	af
+                           1002 ;src/monkey1.c:521: showSprites();
+   0444 CDr0Fr06      [17] 1003 	call	_showSprites
+                           1004 ;src/monkey1.c:522: WAIT(100);
+   0447 21 64 00      [10] 1005 	ld	hl, #0x0064
+   044A E5            [11] 1006 	push	hl
+   044B CDr5Er02      [17] 1007 	call	_WAIT
+                           1008 ;src/monkey1.c:525: VPRINT(0,cursorLine++, "UpdateMonkeyFrame(plane,frame)"); 
+   044E 21rAFr05      [10] 1009 	ld	hl, #___str_4
+   0451 E3            [19] 1010 	ex	(sp),hl
+   0452 3E 04         [ 7] 1011 	ld	a, #0x04
+   0454 F5            [11] 1012 	push	af
+   0455 33            [ 6] 1013 	inc	sp
+   0456 AF            [ 4] 1014 	xor	a, a
+   0457 F5            [11] 1015 	push	af
+   0458 33            [ 6] 1016 	inc	sp
+   0459 CDr81r02      [17] 1017 	call	_VPRINT
+   045C F1            [10] 1018 	pop	af
+   045D F1            [10] 1019 	pop	af
+                           1020 ;src/monkey1.c:526: for(i=0;i<20;i++)
+   045E 01 00 00      [10] 1021 	ld	bc, #0x0000
+   0461                    1022 00112$:
+                           1023 ;src/monkey1.c:528: WAIT(16);
+   0461 C5            [11] 1024 	push	bc
+   0462 21 10 00      [10] 1025 	ld	hl, #0x0010
+   0465 E5            [11] 1026 	push	hl
+   0466 CDr5Er02      [17] 1027 	call	_WAIT
+   0469 F1            [10] 1028 	pop	af
+   046A C1            [10] 1029 	pop	bc
+                           1030 ;src/monkey1.c:529: for(plane=0;plane<32;plane++) UpdateMonkeyFrame(plane,1);
+   046B 16 00         [ 7] 1031 	ld	d, #0x00
+   046D                    1032 00108$:
+   046D C5            [11] 1033 	push	bc
+   046E D5            [11] 1034 	push	de
+   046F 3E 01         [ 7] 1035 	ld	a, #0x01
+   0471 F5            [11] 1036 	push	af
+   0472 33            [ 6] 1037 	inc	sp
+   0473 D5            [11] 1038 	push	de
+   0474 33            [ 6] 1039 	inc	sp
+   0475 CDr00r00      [17] 1040 	call	_UpdateMonkeyFrame
+   0478 F1            [10] 1041 	pop	af
+   0479 D1            [10] 1042 	pop	de
+   047A C1            [10] 1043 	pop	bc
+   047B 14            [ 4] 1044 	inc	d
+   047C 7A            [ 4] 1045 	ld	a, d
+   047D D6 20         [ 7] 1046 	sub	a, #0x20
+   047F 38 EC         [12] 1047 	jr	C,00108$
+                           1048 ;src/monkey1.c:530: WAIT(16);
+   0481 C5            [11] 1049 	push	bc
+   0482 21 10 00      [10] 1050 	ld	hl, #0x0010
+   0485 E5            [11] 1051 	push	hl
+   0486 CDr5Er02      [17] 1052 	call	_WAIT
+   0489 F1            [10] 1053 	pop	af
+   048A C1            [10] 1054 	pop	bc
+                           1055 ;src/monkey1.c:531: for(plane=0;plane<32;plane++) UpdateMonkeyFrame(plane,0);
+   048B 16 00         [ 7] 1056 	ld	d, #0x00
+   048D                    1057 00110$:
+   048D C5            [11] 1058 	push	bc
+   048E D5            [11] 1059 	push	de
+   048F AF            [ 4] 1060 	xor	a, a
+   0490 F5            [11] 1061 	push	af
+   0491 33            [ 6] 1062 	inc	sp
+   0492 D5            [11] 1063 	push	de
+   0493 33            [ 6] 1064 	inc	sp
+   0494 CDr00r00      [17] 1065 	call	_UpdateMonkeyFrame
+   0497 F1            [10] 1066 	pop	af
+   0498 D1            [10] 1067 	pop	de
+   0499 C1            [10] 1068 	pop	bc
+   049A 14            [ 4] 1069 	inc	d
+   049B 7A            [ 4] 1070 	ld	a, d
+   049C D6 20         [ 7] 1071 	sub	a, #0x20
+   049E 38 ED         [12] 1072 	jr	C,00110$
+                           1073 ;src/monkey1.c:526: for(i=0;i<20;i++)
+   04A0 03            [ 6] 1074 	inc	bc
+   04A1 79            [ 4] 1075 	ld	a, c
+   04A2 D6 14         [ 7] 1076 	sub	a, #0x14
+   04A4 78            [ 4] 1077 	ld	a, b
+   04A5 DE 00         [ 7] 1078 	sbc	a, #0x00
+   04A7 38 B8         [12] 1079 	jr	C,00112$
+                           1080 ;src/monkey1.c:535: VPRINT(0,cursorLine++, "ClearMonkeys()");
+   04A9 21rCEr05      [10] 1081 	ld	hl, #___str_5
+   04AC E5            [11] 1082 	push	hl
+   04AD 3E 05         [ 7] 1083 	ld	a, #0x05
+   04AF F5            [11] 1084 	push	af
+   04B0 33            [ 6] 1085 	inc	sp
+   04B1 AF            [ 4] 1086 	xor	a, a
+   04B2 F5            [11] 1087 	push	af
+   04B3 33            [ 6] 1088 	inc	sp
+   04B4 CDr81r02      [17] 1089 	call	_VPRINT
+   04B7 F1            [10] 1090 	pop	af
+   04B8 F1            [10] 1091 	pop	af
+                           1092 ;src/monkey1.c:536: ClearMonkeys();
+   04B9 CDr00r00      [17] 1093 	call	_ClearMonkeys
+                           1094 ;src/monkey1.c:537: WAIT(100);
+   04BC 21 64 00      [10] 1095 	ld	hl, #0x0064
+   04BF E5            [11] 1096 	push	hl
+   04C0 CDr5Er02      [17] 1097 	call	_WAIT
+                           1098 ;src/monkey1.c:541: VPRINT(0,cursorLine++, "Monkeys Dancing");
+   04C3 21rDDr05      [10] 1099 	ld	hl, #___str_6
+   04C6 E3            [19] 1100 	ex	(sp),hl
+   04C7 3E 06         [ 7] 1101 	ld	a, #0x06
+   04C9 F5            [11] 1102 	push	af
+   04CA 33            [ 6] 1103 	inc	sp
+   04CB AF            [ 4] 1104 	xor	a, a
+   04CC F5            [11] 1105 	push	af
+   04CD 33            [ 6] 1106 	inc	sp
+   04CE CDr81r02      [17] 1107 	call	_VPRINT
+   04D1 F1            [10] 1108 	pop	af
+   04D2 F1            [10] 1109 	pop	af
+                           1110 ;src/monkey1.c:542: for(i=0;i<2048;i++)
+   04D3 AF            [ 4] 1111 	xor	a, a
+   04D4 DD 77 FD      [19] 1112 	ld	-3 (ix), a
+   04D7 AF            [ 4] 1113 	xor	a, a
+   04D8 DD 77 FE      [19] 1114 	ld	-2 (ix), a
+   04DB DD 77 FF      [19] 1115 	ld	-1 (ix), a
+   04DE                    1116 00116$:
+                           1117 ;src/monkey1.c:544: HALT;    
+   04DE 76            [ 4] 1118 	halt	
+                           1119 ;src/monkey1.c:546: for(plane=0;plane<32;plane++)
+   04DF DD 4E FC      [19] 1120 	ld	c, -4 (ix)
+   04E2 CB 39         [ 8] 1121 	srl	c
+   04E4 CB 39         [ 8] 1122 	srl	c
+   04E6 CB 39         [ 8] 1123 	srl	c
+   04E8 CB 39         [ 8] 1124 	srl	c
+   04EA 06 00         [ 7] 1125 	ld	b, #0x00
+   04EC                    1126 00114$:
+                           1127 ;src/monkey1.c:548: posMonkey = grade + (plane*8);
+   04EC 78            [ 4] 1128 	ld	a, b
+   04ED 87            [ 4] 1129 	add	a, a
+   04EE 87            [ 4] 1130 	add	a, a
+   04EF 87            [ 4] 1131 	add	a, a
+   04F0 DD 5E FD      [19] 1132 	ld	e, -3 (ix)
+   04F3 83            [ 4] 1133 	add	a, e
+   04F4 5F            [ 4] 1134 	ld	e, a
+                           1135 ;src/monkey1.c:549: ShowMonkey(plane, posX[posMonkey], posY[posMonkey], 8);
+   04F5 21r4Fr01      [10] 1136 	ld	hl, #_posY
+   04F8 16 00         [ 7] 1137 	ld	d, #0x00
+   04FA 19            [11] 1138 	add	hl, de
+   04FB 56            [ 7] 1139 	ld	d, (hl)
+   04FC 7B            [ 4] 1140 	ld	a, e
+   04FD C6r4F         [ 7] 1141 	add	a, #<(_posX)
+   04FF 6F            [ 4] 1142 	ld	l, a
+   0500 3E 00         [ 7] 1143 	ld	a, #0x00
+   0502 CEs00         [ 7] 1144 	adc	a, #>(_posX)
+   0504 67            [ 4] 1145 	ld	h, a
+   0505 5E            [ 7] 1146 	ld	e, (hl)
+   0506 C5            [11] 1147 	push	bc
+   0507 3E 08         [ 7] 1148 	ld	a, #0x08
+   0509 F5            [11] 1149 	push	af
+   050A 33            [ 6] 1150 	inc	sp
+   050B D5            [11] 1151 	push	de
+   050C C5            [11] 1152 	push	bc
+   050D 33            [ 6] 1153 	inc	sp
+   050E CDr00r00      [17] 1154 	call	_ShowMonkey
+   0511 F1            [10] 1155 	pop	af
+   0512 F1            [10] 1156 	pop	af
+   0513 C1            [10] 1157 	pop	bc
+                           1158 ;src/monkey1.c:551: UpdateMonkeyFrame(plane,frame>>4);           
+   0514 C5            [11] 1159 	push	bc
+   0515 79            [ 4] 1160 	ld	a, c
+   0516 F5            [11] 1161 	push	af
+   0517 33            [ 6] 1162 	inc	sp
+   0518 C5            [11] 1163 	push	bc
+   0519 33            [ 6] 1164 	inc	sp
+   051A CDr00r00      [17] 1165 	call	_UpdateMonkeyFrame
+   051D F1            [10] 1166 	pop	af
+   051E C1            [10] 1167 	pop	bc
+                           1168 ;src/monkey1.c:546: for(plane=0;plane<32;plane++)
+   051F 04            [ 4] 1169 	inc	b
+   0520 78            [ 4] 1170 	ld	a, b
+   0521 D6 20         [ 7] 1171 	sub	a, #0x20
+   0523 38 C7         [12] 1172 	jr	C,00114$
+                           1173 ;src/monkey1.c:554: frame++;
+   0525 DD 34 FC      [23] 1174 	inc	-4 (ix)
+                           1175 ;src/monkey1.c:555: if (frame>31) frame = 0; 
+   0528 3E 1F         [ 7] 1176 	ld	a, #0x1f
+   052A DD 96 FC      [19] 1177 	sub	a, -4 (ix)
+   052D 30 04         [12] 1178 	jr	NC,00106$
+   052F AF            [ 4] 1179 	xor	a, a
+   0530 DD 77 FC      [19] 1180 	ld	-4 (ix), a
+   0533                    1181 00106$:
+                           1182 ;src/monkey1.c:557: grade++;
+   0533 DD 34 FD      [23] 1183 	inc	-3 (ix)
+                           1184 ;src/monkey1.c:542: for(i=0;i<2048;i++)
+   0536 DD 34 FE      [23] 1185 	inc	-2 (ix)
+   0539 20 03         [12] 1186 	jr	NZ,00180$
+   053B DD 34 FF      [23] 1187 	inc	-1 (ix)
+   053E                    1188 00180$:
+   053E DD 7E FF      [19] 1189 	ld	a, -1 (ix)
+   0541 D6 08         [ 7] 1190 	sub	a, #0x08
+   0543 38 99         [12] 1191 	jr	C,00116$
+                           1192 ;src/monkey1.c:565: VPRINT(0,cursorLine, "Press any key.");
+   0545 21rEDr05      [10] 1193 	ld	hl, #___str_7
+   0548 E5            [11] 1194 	push	hl
+   0549 3E 0A         [ 7] 1195 	ld	a, #0x0a
+   054B F5            [11] 1196 	push	af
+   054C 33            [ 6] 1197 	inc	sp
+   054D AF            [ 4] 1198 	xor	a, a
+   054E F5            [11] 1199 	push	af
+   054F 33            [ 6] 1200 	inc	sp
+   0550 CDr81r02      [17] 1201 	call	_VPRINT
+   0553 F1            [10] 1202 	pop	af
+   0554 F1            [10] 1203 	pop	af
+                           1204 ;src/monkey1.c:566: LOCATE(14,cursorLine);
+   0555 11 0E 0A      [10] 1205 	ld	de, #0x0a0e
+   0558 D5            [11] 1206 	push	de
+   0559 CDrEBr02      [17] 1207 	call	_LOCATE
+   055C F1            [10] 1208 	pop	af
+                           1209 ;src/monkey1.c:567: key = INKEY();
+   055D CDr4Fr02      [17] 1210 	call	_INKEY
+                           1211 ;src/monkey1.c:571: VPRINT(0,cursorLine,"End of the test...");
+   0560 21rFCr05      [10] 1212 	ld	hl, #___str_8
+   0563 E5            [11] 1213 	push	hl
+   0564 3E 0C         [ 7] 1214 	ld	a, #0x0c
+   0566 F5            [11] 1215 	push	af
+   0567 33            [ 6] 1216 	inc	sp
+   0568 AF            [ 4] 1217 	xor	a, a
+   0569 F5            [11] 1218 	push	af
+   056A 33            [ 6] 1219 	inc	sp
+   056B CDr81r02      [17] 1220 	call	_VPRINT
+                           1221 ;src/monkey1.c:573: }
+   056E DD F9         [10] 1222 	ld	sp,ix
+   0570 DD E1         [14] 1223 	pop	ix
+   0572 C9            [10] 1224 	ret
+   0573                    1225 ___str_2:
+   0573 2D 2D 2D 2D 2D 2D  1226 	.ascii "-----------------Test Functions"
         2D 2D 2D 2D 2D 2D
         2D 2D 2D 2D 2D 54
         65 73 74 20 46 75
         6E 63 74 69 6F 6E
         73
-   058B 00                 1221 	.db 0x00
-   058C                    1222 ___str_3:
-   058C 53 68 6F 77 4D 6F  1223 	.ascii "ShowMonkey(plane,x,y,color)"
+   0592 00                 1227 	.db 0x00
+   0593                    1228 ___str_3:
+   0593 53 68 6F 77 4D 6F  1229 	.ascii "ShowMonkey(plane,x,y,color)"
         6E 6B 65 79 28 70
         6C 61 6E 65 2C 78
         2C 79 2C 63 6F 6C
         6F 72 29
-   05A7 00                 1224 	.db 0x00
-   05A8                    1225 ___str_4:
-   05A8 55 70 64 61 74 65  1226 	.ascii "UpdateMonkeyFrame(plane,frame)"
+   05AE 00                 1230 	.db 0x00
+   05AF                    1231 ___str_4:
+   05AF 55 70 64 61 74 65  1232 	.ascii "UpdateMonkeyFrame(plane,frame)"
         4D 6F 6E 6B 65 79
         46 72 61 6D 65 28
         70 6C 61 6E 65 2C
         66 72 61 6D 65 29
-   05C6 00                 1227 	.db 0x00
-   05C7                    1228 ___str_5:
-   05C7 43 6C 65 61 72 4D  1229 	.ascii "ClearMonkeys()"
+   05CD 00                 1233 	.db 0x00
+   05CE                    1234 ___str_5:
+   05CE 43 6C 65 61 72 4D  1235 	.ascii "ClearMonkeys()"
         6F 6E 6B 65 79 73
         28 29
-   05D5 00                 1230 	.db 0x00
-   05D6                    1231 ___str_6:
-   05D6 4D 6F 6E 6B 65 79  1232 	.ascii "Monkeys Dancing"
+   05DC 00                 1236 	.db 0x00
+   05DD                    1237 ___str_6:
+   05DD 4D 6F 6E 6B 65 79  1238 	.ascii "Monkeys Dancing"
         73 20 44 61 6E 63
         69 6E 67
-   05E5 00                 1233 	.db 0x00
-   05E6                    1234 ___str_7:
-   05E6 50 72 65 73 73 20  1235 	.ascii "Press any key."
+   05EC 00                 1239 	.db 0x00
+   05ED                    1240 ___str_7:
+   05ED 50 72 65 73 73 20  1241 	.ascii "Press any key."
         61 6E 79 20 6B 65
         79 2E
-   05F4 00                 1236 	.db 0x00
-   05F5                    1237 ___str_8:
-   05F5 45 6E 64 20 6F 66  1238 	.ascii "End of the test..."
+   05FB 00                 1242 	.db 0x00
+   05FC                    1243 ___str_8:
+   05FC 45 6E 64 20 6F 66  1244 	.ascii "End of the test..."
         20 74 68 65 20 74
         65 73 74 2E 2E 2E
-   0607 00                 1239 	.db 0x00
-                           1240 ;src\monkey1.c:582: void showSprites()
-                           1241 ;	---------------------------------
-                           1242 ; Function showSprites
-                           1243 ; ---------------------------------
-   0608                    1244 _showSprites::
-                           1245 ;src\monkey1.c:584: char x=0;
-                           1246 ;src\monkey1.c:588: for(plane=0;plane<32;plane++)
-   0608 01 00 00      [10] 1247 	ld	bc, #0x0000
-   060B                    1248 00104$:
-                           1249 ;src\monkey1.c:590: posY = (plane/4)*16;
-   060B 68            [ 4] 1250 	ld	l, b
-   060C 26 00         [ 7] 1251 	ld	h, #0x00
-   060E 5D            [ 4] 1252 	ld	e, l
-   060F 54            [ 4] 1253 	ld	d, h
-   0610 CB 7C         [ 8] 1254 	bit	7, h
-   0612 28 04         [12] 1255 	jr	Z,00108$
-   0614 EB            [ 4] 1256 	ex	de,hl
-   0615 13            [ 6] 1257 	inc	de
-   0616 13            [ 6] 1258 	inc	de
-   0617 13            [ 6] 1259 	inc	de
-   0618                    1260 00108$:
-   0618 CB 2A         [ 8] 1261 	sra	d
-   061A CB 1B         [ 8] 1262 	rr	e
-   061C CB 2A         [ 8] 1263 	sra	d
-   061E CB 1B         [ 8] 1264 	rr	e
-   0620 7B            [ 4] 1265 	ld	a, e
-   0621 87            [ 4] 1266 	add	a, a
-   0622 87            [ 4] 1267 	add	a, a
-   0623 87            [ 4] 1268 	add	a, a
-   0624 87            [ 4] 1269 	add	a, a
-                           1270 ;src\monkey1.c:591: posY += 48;
-   0625 C6 30         [ 7] 1271 	add	a, #0x30
-   0627 67            [ 4] 1272 	ld	h, a
-                           1273 ;src\monkey1.c:592: ShowMonkey(plane, x*16, posY, 8);
-   0628 79            [ 4] 1274 	ld	a, c
-   0629 87            [ 4] 1275 	add	a, a
-   062A 87            [ 4] 1276 	add	a, a
-   062B 87            [ 4] 1277 	add	a, a
-   062C 87            [ 4] 1278 	add	a, a
-   062D 57            [ 4] 1279 	ld	d, a
-   062E C5            [11] 1280 	push	bc
-   062F 3E 08         [ 7] 1281 	ld	a, #0x08
-   0631 F5            [11] 1282 	push	af
-   0632 33            [ 6] 1283 	inc	sp
-   0633 6A            [ 4] 1284 	ld	l, d
-   0634 E5            [11] 1285 	push	hl
+   060E 00                 1245 	.db 0x00
+                           1246 ;src/monkey1.c:582: void showSprites()
+                           1247 ;	---------------------------------
+                           1248 ; Function showSprites
+                           1249 ; ---------------------------------
+   060F                    1250 _showSprites::
+                           1251 ;src/monkey1.c:584: char x=0;
+                           1252 ;src/monkey1.c:588: for(plane=0;plane<32;plane++)
+   060F 01 00 00      [10] 1253 	ld	bc, #0x0000
+   0612                    1254 00104$:
+                           1255 ;src/monkey1.c:590: posY = (plane/4)*16;
+   0612 68            [ 4] 1256 	ld	l, b
+   0613 26 00         [ 7] 1257 	ld	h, #0x00
+   0615 5D            [ 4] 1258 	ld	e, l
+   0616 54            [ 4] 1259 	ld	d, h
+   0617 CB 7C         [ 8] 1260 	bit	7, h
+   0619 28 04         [12] 1261 	jr	Z,00108$
+   061B EB            [ 4] 1262 	ex	de,hl
+   061C 13            [ 6] 1263 	inc	de
+   061D 13            [ 6] 1264 	inc	de
+   061E 13            [ 6] 1265 	inc	de
+   061F                    1266 00108$:
+   061F CB 2A         [ 8] 1267 	sra	d
+   0621 CB 1B         [ 8] 1268 	rr	e
+   0623 CB 2A         [ 8] 1269 	sra	d
+   0625 CB 1B         [ 8] 1270 	rr	e
+   0627 7B            [ 4] 1271 	ld	a, e
+   0628 87            [ 4] 1272 	add	a, a
+   0629 87            [ 4] 1273 	add	a, a
+   062A 87            [ 4] 1274 	add	a, a
+   062B 87            [ 4] 1275 	add	a, a
+                           1276 ;src/monkey1.c:591: posY += 48;
+   062C C6 30         [ 7] 1277 	add	a, #0x30
+   062E 67            [ 4] 1278 	ld	h, a
+                           1279 ;src/monkey1.c:592: ShowMonkey(plane, x*16, posY, 8);
+   062F 79            [ 4] 1280 	ld	a, c
+   0630 87            [ 4] 1281 	add	a, a
+   0631 87            [ 4] 1282 	add	a, a
+   0632 87            [ 4] 1283 	add	a, a
+   0633 87            [ 4] 1284 	add	a, a
+   0634 57            [ 4] 1285 	ld	d, a
    0635 C5            [11] 1286 	push	bc
-   0636 33            [ 6] 1287 	inc	sp
-   0637 CDr00r00      [17] 1288 	call	_ShowMonkey
-   063A F1            [10] 1289 	pop	af
-   063B F1            [10] 1290 	pop	af
-   063C C1            [10] 1291 	pop	bc
-                           1292 ;src\monkey1.c:593: x++;
-   063D 0C            [ 4] 1293 	inc	c
-                           1294 ;src\monkey1.c:594: if (x>3) x=0;
-   063E 3E 03         [ 7] 1295 	ld	a, #0x03
-   0640 91            [ 4] 1296 	sub	a, c
-   0641 30 02         [12] 1297 	jr	NC,00105$
-   0643 0E 00         [ 7] 1298 	ld	c, #0x00
-   0645                    1299 00105$:
-                           1300 ;src\monkey1.c:588: for(plane=0;plane<32;plane++)
-   0645 04            [ 4] 1301 	inc	b
-   0646 78            [ 4] 1302 	ld	a, b
-   0647 D6 20         [ 7] 1303 	sub	a, #0x20
-   0649 38 C0         [12] 1304 	jr	C,00104$
-                           1305 ;src\monkey1.c:596: }
-   064B C9            [10] 1306 	ret
-                           1307 	.area _CODE
-                           1308 	.area _INITIALIZER
-                           1309 	.area _CABS (ABS)
+   0636 3E 08         [ 7] 1287 	ld	a, #0x08
+   0638 F5            [11] 1288 	push	af
+   0639 33            [ 6] 1289 	inc	sp
+   063A 6A            [ 4] 1290 	ld	l, d
+   063B E5            [11] 1291 	push	hl
+   063C C5            [11] 1292 	push	bc
+   063D 33            [ 6] 1293 	inc	sp
+   063E CDr00r00      [17] 1294 	call	_ShowMonkey
+   0641 F1            [10] 1295 	pop	af
+   0642 F1            [10] 1296 	pop	af
+   0643 C1            [10] 1297 	pop	bc
+                           1298 ;src/monkey1.c:593: x++;
+   0644 0C            [ 4] 1299 	inc	c
+                           1300 ;src/monkey1.c:594: if (x>3) x=0;
+   0645 3E 03         [ 7] 1301 	ld	a, #0x03
+   0647 91            [ 4] 1302 	sub	a, c
+   0648 30 02         [12] 1303 	jr	NC,00105$
+   064A 0E 00         [ 7] 1304 	ld	c, #0x00
+   064C                    1305 00105$:
+                           1306 ;src/monkey1.c:588: for(plane=0;plane<32;plane++)
+   064C 04            [ 4] 1307 	inc	b
+   064D 78            [ 4] 1308 	ld	a, b
+   064E D6 20         [ 7] 1309 	sub	a, #0x20
+   0650 38 C0         [12] 1310 	jr	C,00104$
+                           1311 ;src/monkey1.c:596: }
+   0652 C9            [10] 1312 	ret
+                           1313 	.area _CODE
+                           1314 	.area _INITIALIZER
+                           1315 	.area _CABS (ABS)

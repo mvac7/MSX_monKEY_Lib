@@ -1,6 +1,6 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
-; Version 3.9.0 #11195 (MINGW64)
+; Version 4.0.0 #11528 (Linux)
 ;--------------------------------------------------------
 	.module monkey1
 	.optsdcc -mz80
@@ -66,25 +66,25 @@
 ; code
 ;--------------------------------------------------------
 	.area _CODE
-;src\monkey1.c:121: void main(void)
+;src/monkey1.c:121: void main(void)
 ;	---------------------------------
 ; Function main
 ; ---------------------------------
 _main::
-;src\monkey1.c:125: InitializeMonkeys();
+;src/monkey1.c:125: InitializeMonkeys();
 	call	_InitializeMonkeys
-;src\monkey1.c:131: __endasm;
+;src/monkey1.c:131: __endasm;
 	ld	HL,#0xF3B0 ;0xF3B0 system variable
 	ld	A,#32
 	ld	(HL),A ;WIDTH(32)
-;src\monkey1.c:134: testSPRITES();
+;src/monkey1.c:134: testSPRITES();
 	call	_testSPRITES
-;src\monkey1.c:144: WAIT(30*10);
+;src/monkey1.c:144: WAIT(30*10);
 	ld	hl, #0x012c
 	push	hl
 	call	_WAIT
 	pop	af
-;src\monkey1.c:158: }
+;src/monkey1.c:158: }
 	ret
 _text01:
 	.ascii "Monkey Library Test1 ROM"
@@ -615,12 +615,12 @@ _posY:
 	.db #0x54	; 84	'T'
 	.db #0x56	; 86	'V'
 	.db #0x58	; 88	'X'
-;src\monkey1.c:166: char INKEY() __naked
+;src/monkey1.c:166: char INKEY() __naked
 ;	---------------------------------
 ; Function INKEY
 ; ---------------------------------
 _INKEY::
-;src\monkey1.c:178: __endasm;
+;src/monkey1.c:178: __endasm;
 	push	IX
 	ld	IX,#0
 	add	IX,SP
@@ -628,13 +628,13 @@ _INKEY::
 	ld	L,A
 	pop	IX
 	ret
-;src\monkey1.c:179: }
-;src\monkey1.c:185: void WAIT(uint cicles)
+;src/monkey1.c:179: }
+;src/monkey1.c:185: void WAIT(uint cicles)
 ;	---------------------------------
 ; Function WAIT
 ; ---------------------------------
 _WAIT::
-;src\monkey1.c:188: for(i=0;i<cicles;i++) HALT;
+;src/monkey1.c:188: for(i=0;i<cicles;i++) HALT;
 	ld	bc, #0x0000
 00103$:
 	ld	hl, #2
@@ -647,14 +647,14 @@ _WAIT::
 	ret	NC
 	halt	
 	inc	bc
-;src\monkey1.c:189: }
+;src/monkey1.c:189: }
 	jr	00103$
-;src\monkey1.c:192: void CLS()
+;src/monkey1.c:192: void CLS()
 ;	---------------------------------
 ; Function CLS
 ; ---------------------------------
 _CLS::
-;src\monkey1.c:194: FillVRAM (BASE5, 0x300, 32);
+;src/monkey1.c:194: FillVRAM (BASE5, 0x300, 32);
 	ld	a, #0x20
 	push	af
 	inc	sp
@@ -666,9 +666,9 @@ _CLS::
 	pop	af
 	pop	af
 	inc	sp
-;src\monkey1.c:195: }
+;src/monkey1.c:195: }
 	ret
-;src\monkey1.c:199: void VPRINT(byte column, byte line, char* text)
+;src/monkey1.c:199: void VPRINT(byte column, byte line, char* text)
 ;	---------------------------------
 ; Function VPRINT
 ; ---------------------------------
@@ -676,7 +676,7 @@ _VPRINT::
 	push	ix
 	ld	ix,#0
 	add	ix,sp
-;src\monkey1.c:201: uint vaddr = BASE5 + (line*32)+column; // calcula la posicion en la VRAM
+;src/monkey1.c:201: uint vaddr = BASE5 + (line*32)+column; // calcula la posicion en la VRAM
 	ld	l, 5 (ix)
 	ld	h, #0x00
 	add	hl, hl
@@ -689,7 +689,7 @@ _VPRINT::
 	ld	c, 4 (ix)
 	ld	b, #0x00
 	add	hl, bc
-;src\monkey1.c:202: VPOKEARRAY(vaddr, text);
+;src/monkey1.c:202: VPOKEARRAY(vaddr, text);
 	ld	c, 6 (ix)
 	ld	b, 7 (ix)
 	push	bc
@@ -697,10 +697,10 @@ _VPRINT::
 	call	_VPOKEARRAY
 	pop	af
 	pop	af
-;src\monkey1.c:203: }
+;src/monkey1.c:203: }
 	pop	ix
 	ret
-;src\monkey1.c:207: void VPOKEARRAY(uint vaddr, char* text)
+;src/monkey1.c:207: void VPOKEARRAY(uint vaddr, char* text)
 ;	---------------------------------
 ; Function VPOKEARRAY
 ; ---------------------------------
@@ -708,7 +708,8 @@ _VPOKEARRAY::
 	push	ix
 	ld	ix,#0
 	add	ix,sp
-;src\monkey1.c:209: while(*(text)) VPOKE(vaddr++,*(text++));
+	push	af
+;src/monkey1.c:209: while(*(text)) VPOKE(vaddr++,*(text++));
 	ld	c, 6 (ix)
 	ld	b, 7 (ix)
 	ld	e, 4 (ix)
@@ -719,8 +720,9 @@ _VPOKEARRAY::
 	jr	Z,00104$
 	ld	h, a
 	inc	bc
+	inc	sp
+	inc	sp
 	push	de
-	pop	iy
 	inc	de
 	ld	4 (ix), e
 	ld	5 (ix), d
@@ -728,7 +730,9 @@ _VPOKEARRAY::
 	push	de
 	push	hl
 	inc	sp
-	push	iy
+	ld	l, -2 (ix)
+	ld	h, -1 (ix)
+	push	hl
 	call	_VPOKE
 	pop	af
 	inc	sp
@@ -736,15 +740,16 @@ _VPOKEARRAY::
 	pop	bc
 	jr	00101$
 00104$:
-;src\monkey1.c:210: }
+;src/monkey1.c:210: }
+	ld	sp, ix
 	pop	ix
 	ret
-;src\monkey1.c:220: void LOCATE(char x, char y) __naked
+;src/monkey1.c:220: void LOCATE(char x, char y) __naked
 ;	---------------------------------
 ; Function LOCATE
 ; ---------------------------------
 _LOCATE::
-;src\monkey1.c:238: __endasm;
+;src/monkey1.c:238: __endasm;
 	push	IX
 	ld	IX,#0
 	add	IX,SP
@@ -757,13 +762,13 @@ _LOCATE::
 	call	0x00C6
 	pop	IX
 	ret
-;src\monkey1.c:240: }
-;src\monkey1.c:247: void PRINT(char* text) __naked
+;src/monkey1.c:240: }
+;src/monkey1.c:247: void PRINT(char* text) __naked
 ;	---------------------------------
 ; Function PRINT
 ; ---------------------------------
 _PRINT::
-;src\monkey1.c:269: __endasm; 
+;src/monkey1.c:269: __endasm; 
 	push	IX
 	ld	IX,#0
 	add	IX,SP
@@ -779,13 +784,13 @@ _PRINT::
 	ENDnext:
 	pop	IX
 	ret
-;src\monkey1.c:270: }
-;src\monkey1.c:275: char PEEK(uint address) __naked
+;src/monkey1.c:270: }
+;src/monkey1.c:275: char PEEK(uint address) __naked
 ;	---------------------------------
 ; Function PEEK
 ; ---------------------------------
 _PEEK::
-;src\monkey1.c:290: __endasm;
+;src/monkey1.c:290: __endasm;
 	push	IX
 	ld	IX,#0
 	add	IX,SP
@@ -794,13 +799,13 @@ _PEEK::
 	ld	L,(HL)
 	pop	IX
 	ret
-;src\monkey1.c:291: }
-;src\monkey1.c:296: uint PEEKW(uint address) __naked
+;src/monkey1.c:291: }
+;src/monkey1.c:296: uint PEEKW(uint address) __naked
 ;	---------------------------------
 ; Function PEEKW
 ; ---------------------------------
 _PEEKW::
-;src\monkey1.c:313: __endasm;
+;src/monkey1.c:313: __endasm;
 	push	IX
 	ld	IX,#0
 	add	IX,SP
@@ -812,13 +817,13 @@ _PEEKW::
 	ex	DE,HL
 	pop	IX
 	ret
-;src\monkey1.c:314: }
-;src\monkey1.c:326: void COLOR(char ink, char background, char border) __naked
+;src/monkey1.c:314: }
+;src/monkey1.c:326: void COLOR(char ink, char background, char border) __naked
 ;	---------------------------------
 ; Function COLOR
 ; ---------------------------------
 _COLOR::
-;src\monkey1.c:349: __endasm;
+;src/monkey1.c:349: __endasm;
 	push	IX
 	ld	IX,#0
 	add	IX,SP
@@ -831,13 +836,13 @@ _COLOR::
 	call	0x0062
 	pop	IX
 	ret
-;src\monkey1.c:350: }
-;src\monkey1.c:361: void VPOKE(unsigned int vaddr, char value) __naked
+;src/monkey1.c:350: }
+;src/monkey1.c:361: void VPOKE(unsigned int vaddr, char value) __naked
 ;	---------------------------------
 ; Function VPOKE
 ; ---------------------------------
 _VPOKE::
-;src\monkey1.c:379: __endasm;
+;src/monkey1.c:379: __endasm;
 	push	IX
 	ld	IX,#0
 	add	IX,SP
@@ -847,13 +852,13 @@ _VPOKE::
 	call	0x004D
 	pop	IX
 	ret
-;src\monkey1.c:380: }
-;src\monkey1.c:390: char VPEEK(unsigned int vaddr) __naked
+;src/monkey1.c:380: }
+;src/monkey1.c:390: char VPEEK(unsigned int vaddr) __naked
 ;	---------------------------------
 ; Function VPEEK
 ; ---------------------------------
 _VPEEK::
-;src\monkey1.c:407: __endasm;
+;src/monkey1.c:407: __endasm;
 	push	IX
 	ld	IX,#0
 	add	IX,SP
@@ -863,13 +868,13 @@ _VPEEK::
 	ld	L,A
 	pop	IX
 	ret
-;src\monkey1.c:408: }
-;src\monkey1.c:420: void FillVRAM(unsigned int vaddr, unsigned int length, char value) __naked
+;src/monkey1.c:408: }
+;src/monkey1.c:420: void FillVRAM(unsigned int vaddr, unsigned int length, char value) __naked
 ;	---------------------------------
 ; Function FillVRAM
 ; ---------------------------------
 _FillVRAM::
-;src\monkey1.c:442: __endasm;
+;src/monkey1.c:442: __endasm;
 	push	IX
 	ld	IX,#0
 	add	IX,SP
@@ -881,13 +886,13 @@ _FillVRAM::
 	call	0x0056
 	pop	IX
 	ret
-;src\monkey1.c:443: }
-;src\monkey1.c:455: void CopyToVRAM(unsigned int addr, unsigned int vaddr, unsigned int length) __naked
+;src/monkey1.c:443: }
+;src/monkey1.c:455: void CopyToVRAM(unsigned int addr, unsigned int vaddr, unsigned int length) __naked
 ;	---------------------------------
 ; Function CopyToVRAM
 ; ---------------------------------
 _CopyToVRAM::
-;src\monkey1.c:478: __endasm;
+;src/monkey1.c:478: __endasm;
 	push	IX
 	ld	IX,#0
 	add	IX,SP
@@ -900,18 +905,18 @@ _CopyToVRAM::
 	call	0x005C
 	pop	IX
 	ret
-;src\monkey1.c:479: }
-;src\monkey1.c:484: void setFont()
+;src/monkey1.c:479: }
+;src/monkey1.c:484: void setFont()
 ;	---------------------------------
 ; Function setFont
 ; ---------------------------------
 _setFont::
-;src\monkey1.c:486: uint ROMfont = PEEKW(CGTABL);
+;src/monkey1.c:486: uint ROMfont = PEEKW(CGTABL);
 	ld	hl, #0x0004
 	push	hl
 	call	_PEEKW
 	pop	af
-;src\monkey1.c:488: CopyToVRAM(ROMfont,BASE7,0x800);       //MSX font pattern
+;src/monkey1.c:488: CopyToVRAM(ROMfont,BASE7,0x800);       //MSX font pattern
 	ld	bc, #0x0800
 	push	bc
 	ld	bc, #0x0000
@@ -921,7 +926,7 @@ _setFont::
 	ld	hl, #6
 	add	hl, sp
 	ld	sp, hl
-;src\monkey1.c:490: FillVRAM(BASE6,32,0xF4);           //colors
+;src/monkey1.c:490: FillVRAM(BASE6,32,0xF4);           //colors
 	ld	a, #0xf4
 	push	af
 	inc	sp
@@ -933,10 +938,10 @@ _setFont::
 	pop	af
 	pop	af
 	inc	sp
-;src\monkey1.c:492: return;
-;src\monkey1.c:493: }
+;src/monkey1.c:492: return;
+;src/monkey1.c:493: }
 	ret
-;src\monkey1.c:499: void testSPRITES()
+;src/monkey1.c:499: void testSPRITES()
 ;	---------------------------------
 ; Function testSPRITES
 ; ---------------------------------
@@ -946,9 +951,10 @@ _testSPRITES::
 	add	ix,sp
 	push	af
 	push	af
-;src\monkey1.c:504: char frame=0;
-	ld	-4 (ix), #0x00
-;src\monkey1.c:511: VPRINT(0,cursorLine++, text01);
+;src/monkey1.c:504: char frame=0;
+	xor	a, a
+	ld	-4 (ix), a
+;src/monkey1.c:511: VPRINT(0,cursorLine++, text01);
 	ld	hl, #_text01
 	push	hl
 	xor	a, a
@@ -959,7 +965,7 @@ _testSPRITES::
 	inc	sp
 	call	_VPRINT
 	pop	af
-;src\monkey1.c:512: VPRINT(0,cursorLine++, text02);
+;src/monkey1.c:512: VPRINT(0,cursorLine++, text02);
 	ld	hl, #_text02
 	ex	(sp),hl
 	ld	a, #0x01
@@ -970,7 +976,7 @@ _testSPRITES::
 	inc	sp
 	call	_VPRINT
 	pop	af
-;src\monkey1.c:516: VPRINT(0,cursorLine++, "-----------------Test Functions");
+;src/monkey1.c:516: VPRINT(0,cursorLine++, "-----------------Test Functions");
 	ld	hl, #___str_2
 	ex	(sp),hl
 	ld	a, #0x02
@@ -981,7 +987,7 @@ _testSPRITES::
 	inc	sp
 	call	_VPRINT
 	pop	af
-;src\monkey1.c:520: VPRINT(0,cursorLine++, "ShowMonkey(plane,x,y,color)"); 
+;src/monkey1.c:520: VPRINT(0,cursorLine++, "ShowMonkey(plane,x,y,color)"); 
 	ld	hl, #___str_3
 	ex	(sp),hl
 	ld	a, #0x03
@@ -993,13 +999,13 @@ _testSPRITES::
 	call	_VPRINT
 	pop	af
 	pop	af
-;src\monkey1.c:521: showSprites();
+;src/monkey1.c:521: showSprites();
 	call	_showSprites
-;src\monkey1.c:522: WAIT(100);
+;src/monkey1.c:522: WAIT(100);
 	ld	hl, #0x0064
 	push	hl
 	call	_WAIT
-;src\monkey1.c:525: VPRINT(0,cursorLine++, "UpdateMonkeyFrame(plane,frame)"); 
+;src/monkey1.c:525: VPRINT(0,cursorLine++, "UpdateMonkeyFrame(plane,frame)"); 
 	ld	hl, #___str_4
 	ex	(sp),hl
 	ld	a, #0x04
@@ -1011,17 +1017,17 @@ _testSPRITES::
 	call	_VPRINT
 	pop	af
 	pop	af
-;src\monkey1.c:526: for(i=0;i<20;i++)
+;src/monkey1.c:526: for(i=0;i<20;i++)
 	ld	bc, #0x0000
 00112$:
-;src\monkey1.c:528: WAIT(16);
+;src/monkey1.c:528: WAIT(16);
 	push	bc
 	ld	hl, #0x0010
 	push	hl
 	call	_WAIT
 	pop	af
 	pop	bc
-;src\monkey1.c:529: for(plane=0;plane<32;plane++) UpdateMonkeyFrame(plane,1);
+;src/monkey1.c:529: for(plane=0;plane<32;plane++) UpdateMonkeyFrame(plane,1);
 	ld	d, #0x00
 00108$:
 	push	bc
@@ -1039,14 +1045,14 @@ _testSPRITES::
 	ld	a, d
 	sub	a, #0x20
 	jr	C,00108$
-;src\monkey1.c:530: WAIT(16);
+;src/monkey1.c:530: WAIT(16);
 	push	bc
 	ld	hl, #0x0010
 	push	hl
 	call	_WAIT
 	pop	af
 	pop	bc
-;src\monkey1.c:531: for(plane=0;plane<32;plane++) UpdateMonkeyFrame(plane,0);
+;src/monkey1.c:531: for(plane=0;plane<32;plane++) UpdateMonkeyFrame(plane,0);
 	ld	d, #0x00
 00110$:
 	push	bc
@@ -1064,14 +1070,14 @@ _testSPRITES::
 	ld	a, d
 	sub	a, #0x20
 	jr	C,00110$
-;src\monkey1.c:526: for(i=0;i<20;i++)
+;src/monkey1.c:526: for(i=0;i<20;i++)
 	inc	bc
 	ld	a, c
 	sub	a, #0x14
 	ld	a, b
 	sbc	a, #0x00
 	jr	C,00112$
-;src\monkey1.c:535: VPRINT(0,cursorLine++, "ClearMonkeys()");
+;src/monkey1.c:535: VPRINT(0,cursorLine++, "ClearMonkeys()");
 	ld	hl, #___str_5
 	push	hl
 	ld	a, #0x05
@@ -1083,13 +1089,13 @@ _testSPRITES::
 	call	_VPRINT
 	pop	af
 	pop	af
-;src\monkey1.c:536: ClearMonkeys();
+;src/monkey1.c:536: ClearMonkeys();
 	call	_ClearMonkeys
-;src\monkey1.c:537: WAIT(100);
+;src/monkey1.c:537: WAIT(100);
 	ld	hl, #0x0064
 	push	hl
 	call	_WAIT
-;src\monkey1.c:541: VPRINT(0,cursorLine++, "Monkeys Dancing");
+;src/monkey1.c:541: VPRINT(0,cursorLine++, "Monkeys Dancing");
 	ld	hl, #___str_6
 	ex	(sp),hl
 	ld	a, #0x06
@@ -1101,33 +1107,32 @@ _testSPRITES::
 	call	_VPRINT
 	pop	af
 	pop	af
-;src\monkey1.c:542: for(i=0;i<2048;i++)
-	ld	-3 (ix), #0x00
-	ld	-2 (ix), #0x00
-	ld	-1 (ix), #0x00
+;src/monkey1.c:542: for(i=0;i<2048;i++)
+	xor	a, a
+	ld	-3 (ix), a
+	xor	a, a
+	ld	-2 (ix), a
+	ld	-1 (ix), a
 00116$:
-;src\monkey1.c:544: HALT;    
+;src/monkey1.c:544: HALT;    
 	halt	
-;src\monkey1.c:546: for(plane=0;plane<32;plane++)
-	ld	a, -4 (ix)
-	rlca
-	rlca
-	rlca
-	rlca
-	and	a, #0x0f
-	ld	c, a
+;src/monkey1.c:546: for(plane=0;plane<32;plane++)
+	ld	c, -4 (ix)
+	srl	c
+	srl	c
+	srl	c
+	srl	c
 	ld	b, #0x00
 00114$:
-;src\monkey1.c:548: posMonkey = grade + (plane*8);
+;src/monkey1.c:548: posMonkey = grade + (plane*8);
 	ld	a, b
 	add	a, a
 	add	a, a
 	add	a, a
-	ld	e, a
-	ld	a, -3 (ix)
+	ld	e, -3 (ix)
 	add	a, e
 	ld	e, a
-;src\monkey1.c:549: ShowMonkey(plane, posX[posMonkey], posY[posMonkey], 8);
+;src/monkey1.c:549: ShowMonkey(plane, posX[posMonkey], posY[posMonkey], 8);
 	ld	hl, #_posY
 	ld	d, #0x00
 	add	hl, de
@@ -1150,7 +1155,7 @@ _testSPRITES::
 	pop	af
 	pop	af
 	pop	bc
-;src\monkey1.c:551: UpdateMonkeyFrame(plane,frame>>4);           
+;src/monkey1.c:551: UpdateMonkeyFrame(plane,frame>>4);           
 	push	bc
 	ld	a, c
 	push	af
@@ -1160,22 +1165,23 @@ _testSPRITES::
 	call	_UpdateMonkeyFrame
 	pop	af
 	pop	bc
-;src\monkey1.c:546: for(plane=0;plane<32;plane++)
+;src/monkey1.c:546: for(plane=0;plane<32;plane++)
 	inc	b
 	ld	a, b
 	sub	a, #0x20
 	jr	C,00114$
-;src\monkey1.c:554: frame++;
+;src/monkey1.c:554: frame++;
 	inc	-4 (ix)
-;src\monkey1.c:555: if (frame>31) frame = 0; 
+;src/monkey1.c:555: if (frame>31) frame = 0; 
 	ld	a, #0x1f
 	sub	a, -4 (ix)
 	jr	NC,00106$
-	ld	-4 (ix), #0x00
+	xor	a, a
+	ld	-4 (ix), a
 00106$:
-;src\monkey1.c:557: grade++;
+;src/monkey1.c:557: grade++;
 	inc	-3 (ix)
-;src\monkey1.c:542: for(i=0;i<2048;i++)
+;src/monkey1.c:542: for(i=0;i<2048;i++)
 	inc	-2 (ix)
 	jr	NZ,00180$
 	inc	-1 (ix)
@@ -1183,7 +1189,7 @@ _testSPRITES::
 	ld	a, -1 (ix)
 	sub	a, #0x08
 	jr	C,00116$
-;src\monkey1.c:565: VPRINT(0,cursorLine, "Press any key.");
+;src/monkey1.c:565: VPRINT(0,cursorLine, "Press any key.");
 	ld	hl, #___str_7
 	push	hl
 	ld	a, #0x0a
@@ -1195,14 +1201,14 @@ _testSPRITES::
 	call	_VPRINT
 	pop	af
 	pop	af
-;src\monkey1.c:566: LOCATE(14,cursorLine);
+;src/monkey1.c:566: LOCATE(14,cursorLine);
 	ld	de, #0x0a0e
 	push	de
 	call	_LOCATE
 	pop	af
-;src\monkey1.c:567: key = INKEY();
+;src/monkey1.c:567: key = INKEY();
 	call	_INKEY
-;src\monkey1.c:571: VPRINT(0,cursorLine,"End of the test...");
+;src/monkey1.c:571: VPRINT(0,cursorLine,"End of the test...");
 	ld	hl, #___str_8
 	push	hl
 	ld	a, #0x0c
@@ -1212,7 +1218,7 @@ _testSPRITES::
 	push	af
 	inc	sp
 	call	_VPRINT
-;src\monkey1.c:573: }
+;src/monkey1.c:573: }
 	ld	sp,ix
 	pop	ix
 	ret
@@ -1237,16 +1243,16 @@ ___str_7:
 ___str_8:
 	.ascii "End of the test..."
 	.db 0x00
-;src\monkey1.c:582: void showSprites()
+;src/monkey1.c:582: void showSprites()
 ;	---------------------------------
 ; Function showSprites
 ; ---------------------------------
 _showSprites::
-;src\monkey1.c:584: char x=0;
-;src\monkey1.c:588: for(plane=0;plane<32;plane++)
+;src/monkey1.c:584: char x=0;
+;src/monkey1.c:588: for(plane=0;plane<32;plane++)
 	ld	bc, #0x0000
 00104$:
-;src\monkey1.c:590: posY = (plane/4)*16;
+;src/monkey1.c:590: posY = (plane/4)*16;
 	ld	l, b
 	ld	h, #0x00
 	ld	e, l
@@ -1267,10 +1273,10 @@ _showSprites::
 	add	a, a
 	add	a, a
 	add	a, a
-;src\monkey1.c:591: posY += 48;
+;src/monkey1.c:591: posY += 48;
 	add	a, #0x30
 	ld	h, a
-;src\monkey1.c:592: ShowMonkey(plane, x*16, posY, 8);
+;src/monkey1.c:592: ShowMonkey(plane, x*16, posY, 8);
 	ld	a, c
 	add	a, a
 	add	a, a
@@ -1289,20 +1295,20 @@ _showSprites::
 	pop	af
 	pop	af
 	pop	bc
-;src\monkey1.c:593: x++;
+;src/monkey1.c:593: x++;
 	inc	c
-;src\monkey1.c:594: if (x>3) x=0;
+;src/monkey1.c:594: if (x>3) x=0;
 	ld	a, #0x03
 	sub	a, c
 	jr	NC,00105$
 	ld	c, #0x00
 00105$:
-;src\monkey1.c:588: for(plane=0;plane<32;plane++)
+;src/monkey1.c:588: for(plane=0;plane<32;plane++)
 	inc	b
 	ld	a, b
 	sub	a, #0x20
 	jr	C,00104$
-;src\monkey1.c:596: }
+;src/monkey1.c:596: }
 	ret
 	.area _CODE
 	.area _INITIALIZER
