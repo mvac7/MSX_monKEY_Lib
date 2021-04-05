@@ -21,6 +21,7 @@ It uses the functions from the MSX BIOS, so it is designed to create application
 Use them for developing MSX applications using [Small Device C Compiler (SDCC)](http://sdcc.sourceforge.net/) cross compiler.
 
 In the source code (\examples), you can find applications for testing and learning purposes.
+[Check out the demo NOW!](https://webmsx.org/?ROM=https://github.com/mvac7/MSX_monKEY_Lib/raw/main/examples/monkey_test/bin/MONKEY1.ROM)
 
 Enjoy it!
 
