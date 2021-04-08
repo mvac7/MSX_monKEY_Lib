@@ -29,6 +29,7 @@ This is your library.
  
 **ATTENTION!** Some of these specifications may be exaggerated or not exist. What do you expect from something made by monkeys?
 
+
 ```
 It uses the functions from the MSX BIOS, so it is designed to create applications in ROM format.
   
@@ -40,11 +41,13 @@ In the source code (\examples), you can find applications for testing and learni
 [Check out the demo NOW!](https://webmsx.org/?ROM=https://github.com/mvac7/MSX_monKEY_Lib/raw/main/examples/monkey_test/bin/MONKEY1.ROM)
 
 **MAKE MONKEE HAPPY!**
+
 *Monkey Lib CEO*
 
 
 
-**NOTICE** No Monkeys Were Harmed in the Making of This Library.
+#### NOTICE
+No Monkeys Were Harmed in the Making of This Library.
 
 
 ## Some comments from famous monkeys
