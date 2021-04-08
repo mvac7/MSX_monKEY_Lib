@@ -46,8 +46,7 @@ In the source code (\examples), you can find applications for testing and learni
 
 
 
-#### NOTICE
-No Monkeys Were Harmed in the Making of This Library.
+**NOTICE** `No Monkeys Were Harmed in the Making of This Library.`
 
 
 ## Some comments from famous monkeys
@@ -87,3 +86,12 @@ No Monkeys Were Harmed in the Making of This Library.
 * void **ShowMonkey**(char monkey, char x, char y, char color) - Display one monkey.
 * void **UpdateMonkeyFrame**(char monkey, char frame) - Give life to the monkey! (monkey=0-31;frame=0-1)
 * char **GiveMeANumber**() - Ask a monkey for a number.
+
+
+## How to use ... whatever this is!
+
+Sorry for the inconvenience.
+
+Right now we have infinite monkeys typing this tutorial.
+
+We hope they can have it, before the apes take over the planet.
