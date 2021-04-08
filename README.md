@@ -11,10 +11,18 @@ Programming language: C and Z80 assembler
 
 ## Description
 
-> "YOU'RE BANANAS!"
-- Monkee 2021
+Welcome to the Monkeeverse.
 
-Open Source library with functions for showing up to 32 monkeys in the screen.
+Do you have an MSX computer and your dream is to be able to make applications with pixelated monkeys?
+
+Congratulations!
+
+This is your library.
+
+* You can display up to 32 monkeys on your MSX screen.
+* Animate your monkeys with 2 fabulous frames.
+* Ask the monkey to give you a number from 0 to 255.
+* And all this free! (This is open source)
 
 It uses the functions from the MSX BIOS, so it is designed to create applications in ROM format.
   
@@ -23,10 +31,21 @@ Use them for developing MSX applications using [Small Device C Compiler (SDCC)](
 In the source code (\examples), you can find applications for testing and learning purposes.
 [Check out the demo NOW!](https://webmsx.org/?ROM=https://github.com/mvac7/MSX_monKEY_Lib/raw/main/examples/monkey_test/bin/MONKEY1.ROM)
 
-Enjoy it!
+**MAKE MONKEE HAPPY!**
 
-MAKE MONKEE HAPPY
+*Monkey Lib CEO*
 
+
+**Attention!** No Animals Were Harmed in the Making of This Library.
+
+
+## Some comments from famous monkeys
+
+> "YOU'RE BANANAS!"
+- Monkee 2021
+
+> "To be or not to be a monkey. This is the monkeequestion."
+- Prince Hamonkeylet 16nn
 
 
 ## History of versions
@@ -37,9 +56,13 @@ MAKE MONKEE HAPPY
 
 ## Requirements
 
-* Small Device C Compiler (SDCC) v3.9 http://sdcc.sourceforge.net/
-* Hex2bin v2.5 http://hex2bin.sourceforge.net/ 
-
+* A computer that works, if it can be, with a keyboard and a floppy drive.
+* [Small Device C Compiler (SDCC) v3.9](http://sdcc.sourceforge.net/)
+* [Hex2bin v2.5](http://hex2bin.sourceforge.net/) 
+* Some [Fr3eL Libraries](https://github.com/mvac7/SDCC_MSX_fR3eL)
+* Being diagnosed with [Peter Pan syndrome](https://en.wikipedia.org/wiki/Peter_Pan_syndrome).
+* Time to do crazy things.
+* Many bananas.
 
 
 

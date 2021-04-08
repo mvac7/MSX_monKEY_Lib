@@ -1,0 +1,22 @@
+<msxOpenDocument app="spriteSX devtool" version="1.0.6.0">
+  <info name="New Project" group="" version="0" author="" startDate="637533504000000000" lastUpdate="637533504000000000">
+    <description>
+    </description>
+  </info>
+  <sprites>
+    <spriteset id="26847159" name="spriteset" size="2" mode="1" paletteID="0">
+      <sprite index="0" name="" InkColor="15" BGcolor="0">
+        <gfxData>00181FC88DC7C37F07070F0F0F18107002C5C1D9899919F18183C6CCF8602038</gfxData>
+      </sprite>
+      <sprite index="1" name="" InkColor="15" BGcolor="0">
+        <gfxData>000000070FC88DC7C37F031B3F27307000000285C1D9C99919F1037EF0903038</gfxData>
+      </sprite>
+      <sprite index="2" name="" InkColor="6" BGcolor="0">
+        <gfxData>000000070FCA8DC5C37F031B3F27307000000285C1D9C99919F1037EF0903038</gfxData>
+      </sprite>
+      <sprite index="3" name="" InkColor="9" BGcolor="0">
+        <gfxData>000000070FCA8DC5C37F031B3F27307000060F8DC1D9C99919F1037EF0903038</gfxData>
+      </sprite>
+    </spriteset>
+  </sprites>
+</msxOpenDocument>
