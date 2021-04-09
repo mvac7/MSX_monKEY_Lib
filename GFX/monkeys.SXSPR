@@ -1,5 +1,5 @@
 <msxOpenDocument app="spriteSX devtool" version="1.0.6.0">
-  <info name="New Project" group="" version="0" author="" startDate="637533504000000000" lastUpdate="637533504000000000">
+  <info name="MSX monKEY Lib" group="mvac7 'n Fubukimaru" version="0" author="mvac7" startDate="637533504000000000" lastUpdate="637535232000000000">
     <description>
     </description>
   </info>
@@ -16,6 +16,30 @@
       </sprite>
       <sprite index="3" name="" InkColor="9" BGcolor="0">
         <gfxData>000000070FCA8DC5C37F031B3F27307000060F8DC1D9C99919F1037EF0903038</gfxData>
+      </sprite>
+      <sprite index="19" name="" InkColor="9" BGcolor="0">
+        <gfxData>000000070FCA8DC5C37F031B3F273070060F0D81D9C9D99931C33EF090303800</gfxData>
+      </sprite>
+      <sprite index="20" name="" InkColor="9" BGcolor="0">
+        <gfxData>00000007CF8ACDC5730F133B2F31700000060F8DC1D9C99919F1037EF0903038</gfxData>
+      </sprite>
+      <sprite index="32" name="" InkColor="10" BGcolor="0">
+        <gfxData>60E0E0E0F0F0787C3E1C00000000000000000000000000000000000000000000</gfxData>
+      </sprite>
+      <sprite index="33" name="" InkColor="10" BGcolor="0">
+        <gfxData>60E0E0E0F0F0787C3E1C00000000000000000000000000000000000000000000</gfxData>
+      </sprite>
+      <sprite index="48" name="" InkColor="6" BGcolor="0">
+        <gfxData>000000000000010103030207070A1F1F0000000000000080C040E0F050F8FCFC</gfxData>
+      </sprite>
+      <sprite index="49" name="" InkColor="6" BGcolor="0">
+        <gfxData>0000000000030301070F0A1F1F2A7F7F0000000000008000C040E0F050F8FCFC</gfxData>
+      </sprite>
+      <sprite index="50" name="" InkColor="6" BGcolor="0">
+        <gfxData>000000000404020202040400010103070000000080804040408080000080C0E0</gfxData>
+      </sprite>
+      <sprite index="51" name="" InkColor="6" BGcolor="0">
+        <gfxData>000000000202040404020200010103070000000040408080804040000080C0E0</gfxData>
       </sprite>
     </spriteset>
   </sprites>
