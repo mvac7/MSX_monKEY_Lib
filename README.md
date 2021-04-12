@@ -26,6 +26,7 @@ This is your library.
 * Ask the monkey to give you a number from 0 to 255.
 * Make all the monkeys disappear with the snap of your fingers.
 * And all this free! (This is open source)
+* Developed by twelve monkeys from the Monkee Lab located on Monkey Island.
  
 **ATTENTION!** Some of these specifications may be exaggerated or not exist. What do you expect from something made by monkeys?
 
@@ -95,3 +96,11 @@ Sorry for the inconvenience.
 Right now we have infinite monkeys typing this tutorial.
 
 We hope they can have it, before the apes take over the planet.
+
+nyImYqtDamwLkOBiGeMJzFDhwGyzsNKnxZGweLKdnhvFkUMNMKuJQMNJgNUGEGrLxiFvjKxoqRg0ubuF
+OMmrTdQIDScoPykshIjRXUdGyCVWnbFwUNaUDLAltzGBjfKAAWQyTNrhuGvnpvbpGQAabWlGJLBlfEAx
+yTstdlobYMMGwzeMonkeyZNVruPpUpkVAAqgnqGMIOvBDiTWhuhJvOKbLGgethYrMSKzySgBPDERancv
+qNJxJoRVSgdnMWSTxxXQguKWdNjNubGabuDWFuppVMrzQgpRVPjSyjjasYQxrrqlqhggQnvZYiCEWaim
+SQfcEMxTYrMDblPpCWqklCoNAdxjBmXWEVbbananaszzBBSkPgbJeNxXnzMRglkBHtYZGbvrENKtlZhR
+aPEsTdLzhtmaXLdPmolYhJclBUpiscgjYnRloVRvmnZqoFwNdyLruOZuKrRwagtnJKNhskKQZmHJudzb
+jwncesNIaFRABBHpDhIlhfOnQzpoYDHZwYnTMXrRHroTZYmVIMYwwHrxSwewkoqgmgmOkiSulzQyWfNx
