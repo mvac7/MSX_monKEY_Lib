@@ -40,27 +40,33 @@ In the source code (\examples), you can find applications for testing and learni
 ```
 
 [Check out the demo NOW!](https://webmsx.org/?ROM=https://github.com/mvac7/MSX_monKEY_Lib/raw/main/examples/monkey_test/bin/MONKEY1.ROM)
-
+  
 **MAKE MONKEE HAPPY!**
 
 *Monkey Lib CEO*
 
-
+  
 
 **NOTICE** `No Monkeys Were Harmed in the Making of This Library.`
-
+  
 
 ## Some comments from famous monkeys
 
 > "YOU'RE BANANAS!"
 - Monkee 2021 :monkey_face:
+  
 
 > "To be or not to be a monkey. This is the monkeequestion."
-- Prince Hamonkeylet :monkey_face:
+- Prince Hamonkeelet :monkey_face:
+  
 
 > "Be monkey, my friend." 
 - Monkee Lee :monkey_face:
+  
 
+> "YOU MANIACS! YOU BLEW IT UP!"
+- any ape
+  
 
 ## History of versions
 
@@ -99,16 +105,20 @@ We hope they can have it, before the apes take over the planet.
 ```
 8KZPNcPJvvW2tTaSaBQduaBD1Qb3FvNH5RRvMft9QmdY245L99XvHuCIC6qq8Ajps5ux3cQAdbaYBnC6
 S5XmVbfaQax6mJVW7hqZQBanN4naS0GLjhe0IFCKauq1Yc8bVztMSUvHivsH7IiJgNB5OUzb5Ku8P02I
-bnu0CmX15iFzvbhExGZcQxWc3zZfzg937Lwv3ubC6Q9odO0IziJkh3BlfbMqytz0fu8Uk1m4RU0011RR
-EAAzY0zfNUUwaQndDHUejnBnwJv1yejY0Zn8lpZwMelUVO3Ofquk02aCK5tEanAHer0dYT3E71UzmQQR
+bnu0CmX15iFzvbhExGZcQxWc3zZfzg937ListubC6Q9odO0IziJkh3BlfbMqytz0fu8Uk1m4RU0011RR
+P9E0Oy3V9cISbN78Be4qlj9fUkKYsSGCge0RXeQHEYdC0EnNyejzoUCMUGhjkJEEGfjWInykAwI4Lbb4
+EAAzY0zfNUUwaQndDHUejnBnwJv1yejY0Zn8lpZwMelUVO3Ofquk02aCK5tEauto0dYT3E71UjhzmQQR
 gbdl1HJLhUoXamiGaaaaaHuk3DTVXucfgrl02GPFE5GKpAlv2jPp9t6PCqeTZZR6lQvsAddeqF50KyeU
-sBDoC0t7GYuEQoOy17yMKn1Vhrc2eaFksF9J172CAWB8VVTF0gmNMqNUME4zWhDxauXWDl9IzzwZNQv3
+sBDoC0t7GYuEQoOy17yMKn1Vhrc2eaFksF9J172CAWB8VVTF0gotomNMME4zWhDxauXWDl9IzzwZNQv3
+vnsd6U2rGFNHSYtgB0GN61C5E7u1p7032bN2OC6GAEQVrPOZIMBQVjdlIuHi7ZoobUODbt8kEN4WSujq
 we8eyZZkkjM8qCD2leiQI2cEidafPyL7RR5CoD8VYEdCn3DSJmZUcfmrKFHk2HjbnsxLO6NnOjWMubL7
-UPgpn7pJRdAkAblURYRbbM4k1hazT3tvvitt3r08mbW4bPcYYZFet0NUvVyq8bAPikbKD17aql1Za0yy
+UPgpn7pJRdAkAcolorblURYRbbM4k1hazT3tvvitt3r08mbW4bPcYYZFet0NUvVyq8bAPikbKql1ZaAY
 9NrnSUYY4pm1r8m207YFpP9IO9AOWjpfx4MnSRf69tk5MLvCT0l8lDgIJm90TwkaNMiQzJ4ylJyGWp6S
-36GRxr3ktGHPXO5430dGTSozsYcRc2sNNZSY2DCpF6BkUvHT1vMFYQfAkt0a5opEEOrDpW8sTLaggPml
+36GRxr3ktGHPxOk430dGTSozsYcRc2sNNZSY2DCpF6BkUvHT1vMFYQfAkt0a5opEEOrDpW8sTLaggPml
+tnaje3nBJmW0Q2VLIpifM9mwrat2WwKOWgJucuDWOuh7fQD4zycwSKf8pXP08RZiLZb6bUzbDfJ6ZPvA
 xyz8OnggHH6DVUvdjGhwqZC3m3kfpfQmHRB9dQj7gYOmSXHFEhRHDp1sFOffhE4hk0rgWab358mhZTXA
 9f0ZBwhx9IASLBDUYEPl08bC4MqcJNtVkOYz7avAU9ixxSVuJD6aV3208FYcqDoh01tZ9gr5lPn4eXsM
-TMfyd0Bn9iIMsxAgR8EUcG98iowUhFFF59tBfwhxfKgRPTNeSadkAZLJzmkm5FIM9ihDuKh9yORGOkgQ
+hiTMSyd0Bn9iIMsxAgR8EUcG98iowUh3giVeMEANumb3rRPTNeSadkAZzm5FIM9ihDuKh9yOrunGOkgQ
+tZMPMrxlKcTnZ59uvET93eVFOvi816NFzRR99d366nVAyLsX70l9r1Wbj9d8ftsKSZPsEmCZDiE50v5n
 WEElMxk31VF0iI87vS9KuGTfutQaYbHgAx4CVEn1lug4rdet0kiodecUyon0mbr3n0kieR0ac0rd4rm3
 ```
