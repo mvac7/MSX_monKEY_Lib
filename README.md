@@ -52,20 +52,20 @@ In the source code (\examples), you can find applications for testing and learni
 
 ## Some comments from famous monkeys
 
-> "YOU'RE BANANAS!"
-- Monkee 2021 :monkey_face:
+> "YOU'RE BANANAS!"  
+*Monkee 2021* :monkey_face:
   
 
-> "To be or not to be a monkey. This is the monkeequestion."
-- Prince Hamonkeelet :monkey_face:
+> "To be or not to be a monkey. This is the monkeequestion."  
+*Prince Hamonkeelet* :monkey_face:
   
 
-> "Be monkey, my friend." 
-- Monkee Lee :monkey_face:
+> "Be monkey, my friend."  
+*Monkee Lee* :monkey_face:
   
 
-> "YOU MANIACS! YOU BLEW IT UP!"
-- any ape
+> "YOU MANIACS! YOU BLEW IT UP!"  
+*any ape* :monkey_face:
   
 
 ## History of versions
@@ -121,4 +121,5 @@ xyz8OnggHH6DVUvdjGhwqZC3m3kfpfQmHRB9dQj7gYOmSXHFEhRHDp1sFOffhE4hk0rgWab358mhZTXA
 hiTMSyd0Bn9iIMsxAgR8EUcG98iowUh3giVeMEANumb3rRPTNeSadkAZzm5FIM9ihDuKh9yOrunGOkgQ
 tZMPMrxlKcTnZ59uvET93eVFOvi816NFzRR99d366nVAyLsX70l9r1Wbj9d8ftsKSZPsEmCZDiE50v5n
 WEElMxk31VF0iI87vS9KuGTfutQaYbHgAx4CVEn1lug4rdet0kiodecUyon0mbr3n0kieR0ac0rd4rm3
+v0idm4in(){InitializeeMonkeys(())))));;
 ```
