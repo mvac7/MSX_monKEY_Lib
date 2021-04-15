@@ -47,7 +47,7 @@ In the source code (\examples), you can find applications for testing and learni
 
   
 
-**NOTICE** `No Monkeys Were Harmed in the Making of This Library.`
+### NOTICE No Monkeys Were Harmed in the Making of This Library.
   
 
 ## Some comments from famous monkeys
@@ -87,11 +87,11 @@ In the source code (\examples), you can find applications for testing and learni
 
 ## Functions
 
-* void **InitializeMonkeys**() - Start the Monkeys' World - Set Screen 1 with 16x16 sprites and write monkey sprite patterns to VRAM.
-* void **ClearMonkeys**() - The monkeys go off the screen.
-* void **ShowMonkey**(char monkey, char x, char y, char color) - Display one monkey.
-* void **UpdateMonkeyFrame**(char monkey, char frame) - Give life to the monkey! (monkey=0-31;frame=0-1)
-* char **GiveMeANumber**() - Ask a monkey for a number.
+* void **InitializeMonkeys()** - *Start the Monkeys' World - Set Screen 1 with 16x16 sprites and write monkey sprite patterns to VRAM.*
+* void **ClearMonkeys()** - *The monkeys go off the screen.
+* void **ShowMonkey(char monkey, char x, char y, char color)** - *Display one monkey.*
+* void **UpdateMonkeyFrame(char monkey, char frame)** - *Give life to the monkey! (monkey=0-31;frame=0-1)*
+* char **GiveMeANumber()** - *Ask a monkey for a number.*
 
 
 ## How to use ... whatever this is!
